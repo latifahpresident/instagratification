@@ -8,6 +8,13 @@ localPg = {
   database_url: process.env.DEV_DATABASE_URL
 }
 
+testPg = {
+  host: process.env.TEST_DATABASE_HOST,
+  database: process.env.TEST_DATABASE_USER,
+  user: "postgres",
+  password: process.env.TEST_DATABASE_PASSWORD,
+  database_url: process.env.TEST_DATABASE_URL
+}
 module.exports = {
 
   development: {
@@ -18,7 +25,7 @@ module.exports = {
     },
     seeds: {
       directory: "./database/seeds"
-    }
+    },
   },
 
   staging: {
@@ -39,12 +46,12 @@ module.exports = {
 
   testing: {
     client: 'pg',
-    connection: localPg, 
+    connection: testPg, 
     migrations: {
       directory: './database/migrations'
     },
     seeds: {
-      directory: './database/seeds'
+      directory: "./database/seeds"
     },
   },
 

@@ -4,4 +4,4 @@ node_js:
 cache:
   directories:
     - "node_modules"
-script: cd backend && yarn install && yarn test a
+script: cd backend && yarn install && yarn test

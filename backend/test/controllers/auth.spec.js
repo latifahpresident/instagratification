@@ -41,7 +41,7 @@ describe("/ authenticated routes for users.", () => {
                 email: "archer",
                 firebase_id: "4x", 
                 full_name: "Sterling Archer", 
-                username: "sterling_archer", 
+                username: "sterling_archer",
             }
             const res = await request(server).post("/signup").send(body)
             expect(res.status).toBe(422)

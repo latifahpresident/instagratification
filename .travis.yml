@@ -1,3 +1,4 @@
+before_install: cd backend
 before_script: cd backend
 language: node_js
 node_js:

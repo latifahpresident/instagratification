@@ -2,19 +2,33 @@ const server = require("./../../app");
 const request = require('supertest');
 const db = require("./../../dbconfig");
 
-beforeAll(async done => {
-    await db.migrate.rollback();
-    await db.migrate.latest();
-    await db.seed.run();
-    return done();
-});
+// beforeAll(async done => {
+//     await db.migrate.rollback();
+//     await db.migrate.latest();
+//     await db.seed.run();
+//     return done();
+// });
 
-afterAll(async () => {
-    await db.destroy();
-});
+// afterAll(async () => {
+//     await db.destroy();
+// });
 
 
 describe("/ authenticated routes for users.", () => {
+    beforeAll(async () => {
+        /*
+        Applies migrations to in-memory database,
+        then applies seeds.
+        */
+        try {
+            await db.migrate.rollback();
+            await db.migrate.latest();
+            await db.seed.run();
+        } catch (err) {
+          throw err;
+        }
+      });
+    
     it("POST request should return a 201 when a new user is created", async () => {
         const body = {
             email: "test3@gmail.com", 

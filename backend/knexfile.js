@@ -46,7 +46,10 @@ module.exports = {
 
   testing: {
     client: 'sqlite3',
-    connection: { filename: './database/instaham_test.sqlite3' },
+    connection: { 
+      // filename: './database/instaham_test.sqlite3' 
+      filename: ':memory:',
+    },
     useNullAsDefault: true, 
     migrations: {
       directory: './database/migrations'

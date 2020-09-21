@@ -1,8 +1,8 @@
 language: node_js
-before_install: cd instaham/backend
-before_script: cd instaham/backend
 node_js: 
   - "stable"
 cache:
   directories:
     - "node_modules"
+script: 
+  -cd backend

@@ -9,10 +9,6 @@ beforeAll(async done => {
     return done();
 });
 
-afterAll(async () => {
-    await db.destroy();
-});
-
 describe("/admin  routes.", () => {
     it("GET to /admin/users should return a 200 and all users", async () => {
         const res = await request(server).get("/admin/users")

@@ -5,6 +5,7 @@ const db = require("./../../dbconfig");
 beforeAll(async done => {
     await db.migrate.rollback();
     await db.migrate.latest();
+    await db.seed.run();
     return done();
 });
 
@@ -18,7 +19,7 @@ describe("/ authenticated routes for users.", () => {
         const body = {
             email: "test3@gmail.com", 
             firebase_id: "3x", 
-            full_name: "Shawn Evens", 
+            full_name: "Shawn Evens",
             username: "shawn_evens" 
         }
         const res = await request(server).post("/signup").send(body)
@@ -40,7 +41,7 @@ describe("/ authenticated routes for users.", () => {
                 email: "archer",
                 firebase_id: "4x", 
                 full_name: "Sterling Archer", 
-                username: "sterling_archer" 
+                username: "sterling_archer", 
             }
             const res = await request(server).post("/signup").send(body)
             expect(res.status).toBe(422)

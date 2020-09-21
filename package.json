@@ -1,7 +1,5 @@
 {
-  "scripts": {
-    "test": "cross-env CI=true yarn test  --prefix backend"
-  },
+ 
   "dependencies": {
     "cross-env": "^7.0.2"
   }

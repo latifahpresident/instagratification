@@ -10,7 +10,7 @@ exports.seed = function(knex, Promise) {
     };
   }
   const users = [];
-  const numFakes = 502;
+  const numFakes = 20;
   for (let i = 0; i < numFakes; i++) {
     users.push(createFakeUser(i));
   } 

@@ -6,6 +6,4 @@ cache:
     - "node_modules"
 services:
   - sqlite3
-before_script:
-  - sqlite3 -c 'create database instaham_test;' -U sqlite3
 script: cd backend && yarn install && yarn test

@@ -10,7 +10,7 @@ exports.postSignUp = async (req, res) => {
         } 
         else if (!errors.isEmpty()) { //checks to see if this is a valid email
             const message =  errors.array()
-            console.log("message", message[0])
+            console.log("an error occured here's the message", message[0])
             return res.status(422).json({message: message[0].msg, oldEmail: email, oldFullName: full_name, oldUsername: username}) //keep old user input for better UX
         } else {
             const newUser = await User.addUser(req.body);
@@ -18,11 +18,13 @@ exports.postSignUp = async (req, res) => {
         }       
      } catch(err) {
         if (err.message === `insert into "user" ("email", "firebase_id", "full_name", "username") values ($1, $2, $3, $4) - duplicate key value violates unique constraint "user_email_unique"`) {
-           return  res.status(500).json({message: `That email is already in use.`});
+           console.log("err.message from signup", err.message)
+            return  res.status(500).json({message: `That email is already in use.`});
+           
         } else if (err.message === `insert into "user" ("email", "firebase_id", "full_name", "username") values ($1, $2, $3, $4) - duplicate key value violates unique constraint "user_username_unique"`){
             return res.status(500).json({message: `That username is already in use.`});
         } else {
-            return res.status(500).json({message: `An error occured while signing up, please try again.`, error: err.detail})
+            return res.status(500).json({message: `An error occured while signing up, please try again.`, error: err})
         }
     }
 };

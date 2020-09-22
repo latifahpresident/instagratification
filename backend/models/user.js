@@ -16,5 +16,5 @@ addUser = (user) => {
 
 module.exports = {
     getUsers,
-    addUser
+    addUser,
 }

@@ -13,7 +13,7 @@ exports.postSignUp = async (req, res) => {
             console.log("an error occured here's the message", message[0])
             return res.status(422).json({message: message[0].msg, oldEmail: email, oldFullName: full_name, oldUsername: username}) //keep old user input for better UX
         } else {
-            const newUser = await User.addUser(req.body);
+            await User.addUser(req.body);
             return res.status(201).json({message: `Welcome ${full_name}`});
         }       
      } catch(err) {

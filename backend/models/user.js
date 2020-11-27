@@ -10,11 +10,25 @@ getUsers = () => {
       )
 };
 
+getById = (id) => {
+    return db("user").innerJoin("post", "user.firebase_id", "post.firebase_id").select("user.firebase_id", "email", "full_name", "username", "profile_url", "post.id", "post.image_url", "post.likes", "post.caption").where({"user.firebase_id": id})
+}
 addUser = (user) => {
     return db("user").insert(user)
+};
+
+deleteUser = (id) => {
+    return db("user").where({"firebase_id": id}).delete();
+};
+
+editUser = (id, user) => {
+    return db("user").where({"firebase_id": id}).update(user);
 };
 
 module.exports = {
     getUsers,
     addUser,
-}
+    deleteUser,
+    editUser,
+    getById
+};

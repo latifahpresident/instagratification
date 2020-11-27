@@ -1,6 +1,6 @@
-const server = require("./../../app");
+const server = require("../../app");
 const request = require('supertest');
-const db = require("./../../dbconfig");
+const db = require("../../dbconfig");
 
 const errorHandler = (err) => {
     console.error(err);
@@ -21,16 +21,23 @@ describe("/ authenticated routes for users.", () => {
         }
       });
     
+      afterAll(async done =>  {
+        await db.destroy();
+        return done();
+      });
+      
     it("POST request should return a 201 when a new user is created", async () => {
         const body = {
             email: "test3@gmail.com", 
             firebase_id: "3x", 
             full_name: "Shawn Evens",
-            username: "shawn_evens" 
+            username: "shawn_evens",
+            profile_url: "https://ibb.co/vxLfWGr",
         }
         const res = await request(server).post("/signup").send(body).catch(errorHandler)
+        // console.log("THIS IS THE NEW USER RES", res)
         expect(res.status).toBe(201);   
-   
+        
     });
     describe("POST request will throw errors.", () => {
         it("should return a 400 if no email is entered", async () => {
@@ -44,10 +51,11 @@ describe("/ authenticated routes for users.", () => {
         });
         it("should return a 422 if email is invalid", async () => {
             const body = {
-                email: "archer",
-                firebase_id: "4x", 
-                full_name: "Sterling Archer", 
-                username: "sterling_archer",
+                email: "pearlcrabs",
+                firebase_id: "4",
+                full_name: "Test",
+                username: "test3",
+                profile_url: "https://s3.amazonaws.com/uifaces/faces/twitter/bergmartin/128.jpg"
             }
             const res = await request(server).post("/signup").send(body)
             expect(res.status).toBe(422)
@@ -59,9 +67,11 @@ describe("/ authenticated routes for users.", () => {
                 firebase_id: "5r43e", 
                 full_name: "Boruto Uzumaki", 
                 username: "boruto_uzumaki",
+                profile_url: "https://s3.amazonaws.com/uifaces/faces/twitter/bergmartin/128.jpg"
+
             }
             const res = await request(server).post("/signup").send(body)
-            console.log("same email", res)
+            // console.log("same email", res)
             expect(res.status).toBe(500)
             expect(res.body.error.errno).toBe(19)
         });
@@ -71,6 +81,8 @@ describe("/ authenticated routes for users.", () => {
                 firebase_id: "5r43efaj433053r322r", 
                 full_name: "Boruto Uzumaki", 
                 username: "boruto_uzumaki",
+                profile_url: "https://s3.amazonaws.com/uifaces/faces/twitter/bergmartin/128.jpg"
+
             }
             const res = await request(server).post("/signup").send(body)
             console.log("same username", res.status)

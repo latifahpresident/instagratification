@@ -44,7 +44,18 @@ module.exports = {
     }
   },
 
-  testing: {
+  // test: {
+  //   client: "sqlite3",
+  //   connection: ":memory:",
+  //   useNullAsDefault: true,
+  //   migrations: {
+  //     directory: './database/migrations'
+  //   },
+  //   seeds: {
+  //     directory: "./database/test_seeds"
+  //   }
+  // },
+  test: {
     client: 'sqlite3',
     connection: { 
       // filename: './database/instaham_test.sqlite3' 
@@ -52,10 +63,10 @@ module.exports = {
     },
     useNullAsDefault: true, 
     migrations: {
-      directory: './database/migrations'
+      directory: './testdata/migrations'
     },
     seeds: {
-      directory: "./database/test_seeds"
+      directory: "./testdata/test_seeds"
     },
   },
 

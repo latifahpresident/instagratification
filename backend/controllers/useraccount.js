@@ -1,18 +1,6 @@
 const User = require("../models/user");
 
-exports.getUser = async(req, res) => {
-    try{
-        const users = await User.getUsers();
-        if( users.length === 0) {
-            res.status(400).json({message: "No users found."})
-        } else {
-            return res.status(200).json({users: users})
-        }
-    } catch (err) {
-        res.status(500).json({message: err.message})
-    }
-};
-
+//Delete a user account
 exports.deleteUser = async(req, res) => {
     try {
         const { id } = req.params;
@@ -26,6 +14,7 @@ exports.deleteUser = async(req, res) => {
     }
 };
 
+//Updates a user account
 exports.editUser = async(req, res) => {
     const { id } = req.params;
     const updates = req.body;
@@ -36,6 +25,21 @@ exports.editUser = async(req, res) => {
             res.status(200).json({message: `Your account has been updated!`})
         }
     } catch (err) {
-        res.status(500).json({message: `There was an error updating your account" ${err.message}`})
+        res.status(500).json({message: `There was an error updating your account. ${err.message}`})
     }
-}
+};
+
+//Get a user's profile
+exports.getById = async(req, res) => {
+    const { id } = req.params;
+    try {
+        if (!id) {
+            res.status(404).json({message: `User not found. Please try again.`})
+        } else {
+            const user = await User.getById(id)
+            res.status(200).json({user: user})
+        }
+    } catch (err) {
+        res.status(500).json({message: `There was error getting to your profile, please try again. ${err.message}` })
+    }
+};

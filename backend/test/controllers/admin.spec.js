@@ -9,13 +9,14 @@ beforeAll(async done => {
     return done();
 });
 
-afterAll(async () => {
+afterAll(async done  => {
     await db.destroy();
+    return done();
 });
 
 describe("/admin  routes.", () => {
     it("GET to /admin/users should return a 200 and all users", async () => {
         const res = await request(server).get("/admin/users")
-        expect(res.status).toBe(200);   
+        expect(res.status).toBe(200);
     });
 });

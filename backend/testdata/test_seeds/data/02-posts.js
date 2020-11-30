@@ -19,5 +19,12 @@ module.exports = [
         likes: 78,
         caption: "Sandy test",
         firebase_id: "8474jfilresfewr34sfaew"
+    },
+    {
+        id: 4,
+        image_url: "https://s3.amazonaws.com/uifaces/faces/twitter/bergmartin/128.jpg",
+        likes: 78,
+        caption: "Sandy delete test",
+        firebase_id: "8474jfilresfewr34sfaew"
     }
 ];

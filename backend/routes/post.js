@@ -6,9 +6,9 @@ const router = express.Router();
 router.post("/new-post", postController.addPost);
 //GET => /posts/get-post => GET ALL POSTS
 router.get("/posts", postController.getPosts);
-//DELETE => /post/delete/id
+//DELETE => /posts/delete/id
 router.delete("/delete/:id", postController.deletePost);
-//PUT => /post/edit/id
+//PUT => /posts/edit/id
 router.put("/update/:id", postController.updatePost);
 
 module.exports = router;

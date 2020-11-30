@@ -18,7 +18,9 @@ deletePost = (id) => {
 };
 
 getPostBy = (id) => {
-    return db("post").where({"firebase_id": id})
+    console.log("id from get by id db", id)
+
+    return db("post").where({"id": id})
 };
 
 module.exports = {

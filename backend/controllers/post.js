@@ -1,5 +1,6 @@
 const Post = require("../models/post");
 const User = require("../models/user");
+const { find } = require("../testdata/test_seeds/data/02-posts");
 
 exports.addPost = async(req, res) => {
     try {
@@ -21,7 +22,6 @@ exports.addPost = async(req, res) => {
 exports.getPosts = async(req, res) => {
     try {
         const posts = await Post.getPost();
-        console.log(`POST`, posts)
         if (posts.length === 0) {
             return res.status(404).json({message: `No posts found, please try again.`})
         } else {
@@ -38,13 +38,16 @@ exports.updatePost = async(req, res) => {
         image_url: req.body.image_url,
         caption: req.body.caption
     }
-    console.log(`ID`, id)
+    const findPost = await Post.getPostBy(id);
+    console.log("findPost lebgth", findPost.length)
     try {
         if (!id || !post.image_url) {
             res.status(404).json({message: `Please login to update your post.`})
+        } else if (findPost.length === 0){
+           res.status(404).json({message: `That post does not exists.`})
         } else {
-             await Post.editPost(id, post);
-             return res.status(200).json({message: `Your post has been updated!`})
+            await Post.editPost(id, post);
+            return res.status(201).json({message: `Your post has been updated!`})
         }
     } catch (err) {
         res.status(500).json({message: `An error occurred while updating your post: ${err.message}`})

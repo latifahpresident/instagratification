@@ -35,7 +35,6 @@ describe("/ authenticated routes for users.", () => {
             profile_url: "https://ibb.co/vxLfWGr",
         }
         const res = await request(server).post("/signup").send(body).catch(errorHandler)
-        // console.log("THIS IS THE NEW USER RES", res)
         expect(res.status).toBe(201);   
         
     });
@@ -46,8 +45,8 @@ describe("/ authenticated routes for users.", () => {
                 full_name: "Tina Belcher", 
                 username: "tina_belchers" 
             }
-            const res = await request(server).post("/signup").send(body)
-            expect(res.status).toBe(400)
+            const res = await request(server).post("/signup").send(body).catch(errorHandler);
+            expect(res.status).toBe(400);
         });
         it("should return a 422 if email is invalid", async () => {
             const body = {
@@ -57,9 +56,9 @@ describe("/ authenticated routes for users.", () => {
                 username: "test3",
                 profile_url: "https://s3.amazonaws.com/uifaces/faces/twitter/bergmartin/128.jpg"
             }
-            const res = await request(server).post("/signup").send(body)
-            expect(res.status).toBe(422)
-            expect(res.body.message).toBe("Please enter a valid email.")
+            const res = await request(server).post("/signup").send(body).catch(errorHandler);
+            expect(res.status).toBe(422);
+            expect(res.body.message).toBe("Please enter a valid email.");
         });
         it("should return a 500 if email is already in use", async () => {
             const body = {
@@ -70,10 +69,10 @@ describe("/ authenticated routes for users.", () => {
                 profile_url: "https://s3.amazonaws.com/uifaces/faces/twitter/bergmartin/128.jpg"
 
             }
-            const res = await request(server).post("/signup").send(body)
+            const res = await request(server).post("/signup").send(body).catch(errorHandler);
             // console.log("same email", res)
-            expect(res.status).toBe(500)
-            expect(res.body.error.errno).toBe(19)
+            expect(res.status).toBe(500);
+            expect(res.body.error.errno).toBe(19);
         });
         it("should return a 500 if username is already in use", async () => {
             const body = {
@@ -84,13 +83,13 @@ describe("/ authenticated routes for users.", () => {
                 profile_url: "https://s3.amazonaws.com/uifaces/faces/twitter/bergmartin/128.jpg"
 
             }
-            const res = await request(server).post("/signup").send(body)
-            console.log("same username", res.status)
+            const res = await request(server).post("/signup").send(body).catch(errorHandler);
+            console.log("same username", res.status);
 
             if (res === 201) {
-                const newUser = await request(server).post("/signup").send(body)
-                expect(res.status).toBe(500)
-                expect(res.body.error.errno).toBe(19)
+                const newUser = await request(server).post("/signup").send(body).catch(errorHandler);
+                expect(res.status).toBe(500);
+                expect(res.body.error.errno).toBe(19);
             }
             
         });

@@ -1,6 +1,6 @@
 import * as actionTypes from './../actions/actionTypes';
 
-intialState = {
+const intialState = {
     firebase_id: null,
     email: null,
     full_name: null,

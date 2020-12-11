@@ -1,4 +1,3 @@
-import { makeStyles } from '@material-ui/core/styles';
 import styled from 'styled-components';
 import { primaryBlue } from './../../../global-styles/global.styles';
 
@@ -13,12 +12,5 @@ export const Button = styled.button`
     border-radius: 4px;
     margin-left: .15rem;
 `;
-const useStyles = makeStyles( ({
-    primary: {
-        border: "1px solid blue",
-        fontSize: ".5rem",
-    
-    }
-}));
 
-export { useStyles }
+

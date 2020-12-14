@@ -4,8 +4,8 @@ exports.up = function(knex, Promise) {
         post.increments().primary();
         post.string("firebase_id").references("firebase_id").inTable("user").onUpdate("CASCADE").onDelete("CASCADE");
         post.string("image_url").notNullable();
-        post.integer("likes").defaultTo(0);
         post.string("caption");
+        post.timestamp('created_at').defaultTo(knex.fn.now());
     })
   };
   

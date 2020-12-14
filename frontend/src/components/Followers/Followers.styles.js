@@ -33,8 +33,7 @@ export const FollowesListItem = styled.li`
 `;
 
 export const AvatarContainer = styled.div`
-    
-    width: 62.5px;
+  width: 62.5px;
   height: 62.5px;
   border: solid 3px transparent;
   border-radius: 50px;
@@ -46,7 +45,7 @@ export const AvatarContainer = styled.div`
   align-items: center;
     .avatarImage {
         height: 52px;
-  width: 52px;
-  border: 3px solid white;
+        width: 52px;
+        border: 3px solid white;
     }
 `;

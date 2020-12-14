@@ -9,7 +9,6 @@ getPost = () => {
 };
 
 editPost = (id, post) => {
-    console.log("id from db", id)
     return db("post").where({"firebase_id": id}).update(post);
 };
 
@@ -18,9 +17,7 @@ deletePost = (id) => {
 };
 
 getPostBy = (id) => {
-    console.log("id from get by id db", id)
-
-    return db("post").where({"id": id})
+    return db("post").where({"id": id});
 };
 
 module.exports = {

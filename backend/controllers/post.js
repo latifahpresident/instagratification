@@ -1,6 +1,5 @@
 const Post = require("../models/post");
 const User = require("../models/user");
-const { find } = require("../testdata/test_seeds/data/02-posts");
 
 exports.addPost = async(req, res) => {
     try {
@@ -16,6 +15,7 @@ exports.addPost = async(req, res) => {
         }
     } catch (err) {
         res.status(500).json({message: `An error occurred while posting, please try again.`})
+        console.log("error", err)
     }
 };
 
@@ -61,7 +61,7 @@ exports.deletePost = async(req, res) => {
             res.status(404).json({message: `This post does not exists please try again.`})
         } else {
             await Post.deletePost(id)
-            res.status(204).json({message: `Your post has been deleted.`})
+            res.status(201).json({message: `Your post has been deleted.`})
         }
    } catch (err) {
        res.status(500).json({message: `An error occurred while you were deleting your post, please try again.`})

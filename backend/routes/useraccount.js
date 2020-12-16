@@ -12,4 +12,10 @@ router.delete("/delete/:id", userController.deleteUser);
 //PUT => user/update/:id => UPDATE THE USERS ACCOUNT
 router.put("update/:id", userController.editUser);
 
+//POST => user/follow => FOLLOW A USER
+router.post("/follow", userController.addFollower);
+
+//DELETE => user/unfollow => UNFOLLOW A USER
+router.delete("/unfollow/:id", userController.unfollow);
+
 module.exports = router;

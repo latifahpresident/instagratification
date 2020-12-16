@@ -4,7 +4,7 @@ const router = express.Router();
 const verifyToken = require("./../middleware/authentication");
 
 //GET => /admin/users => GET ALL USERS
-router.get("/users", verifyToken.auth, adminController.getUser);
+router.get("/users",  adminController.getUser);
 
 //DELETE => /admin/delete/id => DELETE USER
 router.delete("/delete/:id", adminController.deleteUser);

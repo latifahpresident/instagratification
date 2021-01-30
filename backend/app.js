@@ -6,7 +6,7 @@ const authRoutes = require("./routes/auth");
 const adminRoutes = require("./routes/admin");
 const postRoutes = require("./routes/post");
 const userRoutes = require("./routes/useraccount");
-
+const commentRoutes = require("./routes/comment");
 
 app.use(express.json());
 app.use(helmet());
@@ -20,7 +20,8 @@ app.use(function(req, res, next) {
 app.use("/", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/posts", postRoutes);
-app.use("/user", userRoutes)
+app.use("/comment", commentRoutes);
+app.use("/user", userRoutes);
 app.get('/sanity', (req, res) => {res.send('sanity check!')});
 
 module.exports = app;

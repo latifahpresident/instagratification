@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Navigation = styled.nav`
     width: 100%;
     box-sizing: border-box;
-    border: 1px solid #DBDBDB;
+    /* border: 1px solid #DBDBDB; */
     height: 55px;
     display: flex;
     align-items: center;
@@ -15,6 +15,7 @@ export const Navigation = styled.nav`
         align-items: center;
         padding: 0;
         height: auto;
+        margin-top: 0;
     }
 
     .navigation-links {

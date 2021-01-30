@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
         post.string("image_url").notNullable();
         post.string("caption");
         post.timestamp('created_at').defaultTo(knex.fn.now());
+        post.integer("likes").defaultsTo(0);
     })
   };
   

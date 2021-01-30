@@ -11,7 +11,9 @@ getUsers = () => {
 };
 
 getById = (id) => {
-    return db("user").innerJoin("post", "user.firebase_id", "post.firebase_id").select("user.firebase_id", "email", "full_name", "username", "profile_url", "post.id", "post.image_url", "post.caption").where({"user.firebase_id": id})
+    return db("user")
+    // .innerJoin("post", "user.firebase_id", "post.firebase_id")
+    .select("user.firebase_id", "email", "full_name", "username", "profile_url").where({"user.firebase_id": id})
 }
 addUser = (user) => {
     return db("user").insert(user)

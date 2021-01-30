@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const Follow = require("./../models/followers");
+const Post = require("./../models/post");
 
 //Delete a user account
 exports.deleteUser = async(req, res) => {
@@ -33,16 +34,29 @@ exports.editUser = async(req, res) => {
 //Get a user's profile
 exports.getById = async(req, res) => {
     const { id } = req.params;
+    // const comments = [
+    //     {
+    //         author: "test",
+    //         comment: "test comment"
+    //     }
+    // ]
     try {
         if (!id) {
             res.status(404).json({message: `User not found. Please try again.`})
         } else {
             const user = await User.getById(id);
             const followers = await Follow.getFollowers(id);
-            res.status(200).json({user: user, followers: followers})
+            const posts = await Post.getUserPost(id);
+            res.status(200).json(
+                {
+                     user,
+                    followers: followers, 
+                    posts: posts, 
+                })
         }
     } catch (err) {
         res.status(500).json({message: `There was error getting to your profile, please try again. ${err.message}` })
+        console.log("error from get user by id", err)
     }
 };
 
@@ -54,7 +68,7 @@ exports.addFollower = async(req, res) => {
             res.status(404).json({message: `User not found`})
         } else {
              await Follow.addFollower(follow_request)
-            res.status(204).json({message: `Request successfull`})
+            res.status(201).json({message: `Request successfull`})
         }
     } catch (err)  {
         res.status(500).json({message: "There was an error while requesting a follow"});
@@ -75,3 +89,7 @@ exports.unfollow = async(req, res) => {
         res.status(500).json({message: `There was an error while unfollowing this user, please try again`, err})
     }
 };
+
+exports.getUserPosts = async(req, res) => {
+
+}

@@ -2,21 +2,26 @@ import styled from 'styled-components';
 import { grayBorder} from './../../global-styles/global.styles';
 
 export const FollowersSection = styled.section`
-    border: 1px solid ${grayBorder};
-    margin-top: .2rem;
+    /* border-bottom: 1px solid ${grayBorder}; */
+    /* margin-top: .2rem; */
     border-radius: 3px;
-    min-height: 110px;
-    max-height: 110px;
+    /* min-height: 110px;
+    max-height: 110px; */
+    /* border: 1px solid orange; */
+    margin: 0;
+    /* margin-bottom: 1rem; */
+    display: flex;    
 `;
 
 export const FollowersList = styled.ul`
     /* border: 1px solid green; */
-    padding: 0 0 0 1rem;
+    padding: 0 0 0 .2rem;
     display: flex;
-    justify-content: space-between;
     overflow-x: scroll;
     width: auto;
-
+    /* border: 1px solid blue; */
+    align-self: flex-start;
+    margin: 0;
 `;
 
 export const FollowesListItem = styled.li`
@@ -26,8 +31,10 @@ export const FollowesListItem = styled.li`
     align-items: center;
     flex-direction: column;
     margin-right: .5rem;
+    /* border: 1px solid red; */
+
     .avatarUsername {
-        font-size: 0.79rem;
+        font-size: 0.68rem;
         margin: 0;
     }
 `;

@@ -5,7 +5,15 @@ addComment = (comment) => {
 };
 
 getCommentByPostId = (post_id) => {
-    return db("comment").where({"post_id": post_id});
+    return db("comment")
+    .innerJoin("user", "comment.author", "user.firebase_id")
+    .select(
+        "comment.comment",
+        "comment.createdAt",
+        "user.username",
+        "user.profile_url",
+    )
+    .where({"post_id": post_id});
 };
 
 editComment = (comment, id) => {
@@ -20,4 +28,5 @@ module.exports = {
     addComment,
     editComment,
     deleteComment,
+    getCommentByPostId,
 }

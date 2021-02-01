@@ -7,6 +7,11 @@ export const Navigation = styled.nav`
     height: 55px;
     display: flex;
     align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    background-color: white;
+    margin-bottom: 1rem;
     ul {
         /* border: 1px solid red; */
         width: 100%;

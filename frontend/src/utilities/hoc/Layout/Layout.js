@@ -1,14 +1,15 @@
 import React from 'react';
 import Aux from './../Aux/Aux';
 import Navigation from './../../../components/Navigation/NavigationItems';
+import {MainWrapper} from './../../../global-styles/global.styles';
 
 const Layout = (props) => {
     return (
         <Aux>
             <Navigation/> 
-             <main>
+             <MainWrapper >
                 {props.children}
-            </main>
+            </MainWrapper>
         </Aux>
 
     )

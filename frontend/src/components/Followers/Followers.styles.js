@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { grayBorder} from './../../global-styles/global.styles';
 
 export const FollowersSection = styled.section`
-    /* border-bottom: 1px solid ${grayBorder}; */
+    border-bottom: 1px solid ${grayBorder};
     /* margin-top: .2rem; */
     border-radius: 3px;
     /* min-height: 110px;

@@ -38,10 +38,10 @@ const postData = [
     {
         firebase_id: '24i23jnfknhjlawi8',
         profile_url:"https://instagram.ftpa1-1.fna.fbcdn.net/v/t51.2885-15/e35/39017626_258253251488885_5780949491343425536_n.jpg?_nc_ht=instagram.ftpa1-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=SmxB0OBIOqMAX_BYcJ_&tp=1&oh=16174a6c96ea22de703d74a40ac7cee9&oe=603F6FC2",
-        username: 'nerdswithvaginas',
+        username: 'omoori',
         post_image: "https://instagram.ftpa1-1.fna.fbcdn.net/v/t51.2885-15/e35/39017626_258253251488885_5780949491343425536_n.jpg?_nc_ht=instagram.ftpa1-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=SmxB0OBIOqMAX_BYcJ_&tp=1&oh=16174a6c96ea22de703d74a40ac7cee9&oe=603F6FC2",
-        likes: 2100,
-        caption: "test caption"
+        likes: 861,
+        caption: "This is the vibe I'm booking for March and April. DOPE ASS BLACK WOMEN"
     },
     {
         firebase_id: '24i23jnfknhjlawi8',

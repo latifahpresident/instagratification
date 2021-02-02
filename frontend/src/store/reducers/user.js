@@ -11,6 +11,9 @@ const intialState = {
     error: false,
     errorMsg: null,
     successMsg: null,
+    users:  [],
+    followers: [],
+    posts: []
 }
 
 export default (state=intialState, actions) => {

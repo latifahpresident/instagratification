@@ -25,11 +25,11 @@ exports.addPost = async(req, res) => {
 exports.getPosts = async(req, res) => {
     try {
         const posts = await Post.getPost();
-        // if (posts.length === 0) {
-        //     return res.status(404).json({message: `No posts found, please try again.`})
-        // } else {
+        if (posts.length === 0) {
+            return res.status(404).json({message: `No posts found, please try again.`})
+        } else {
             return res.status(200).json({posts: posts})
-        // }
+        }
     } catch(err) {
         res.status(500).json({message: "There was a problem getting your posts, please try again."})
         console.log("ERROR FROM UPDATE LIKE", err)

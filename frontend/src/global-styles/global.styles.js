@@ -7,7 +7,8 @@ export const paddingLR = '.5rem';
 
 export const MainWrapper = styled.main`
     /* border: 1px solid red; */
-    margin-top: 4rem;
+    margin: 4rem 0;
+
 `;
 export const ButtonIcon = styled.button`
     padding-top: .8rem;

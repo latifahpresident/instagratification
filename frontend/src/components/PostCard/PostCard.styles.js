@@ -5,6 +5,7 @@ export const PostCardWrapper = styled.article`
     /* border: 1px solid ${grayBorder}; */
     display: flex;
     flex-direction: column;
+    margin-bottom: .7rem;
 `;
 
 export const PostCardHeader = styled.header`

@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { grayBorder, } from "./../../global-styles/global.styles";
 
 export const FooterNav = styled.nav`
-    height: 54px;
+    height: 60px;
     width: 100%;
-    border: 1px solid green;
+    border: 1px solid ${grayBorder};
     position: fixed;
     bottom: 0;
     z-index: 2;
@@ -11,7 +12,7 @@ export const FooterNav = styled.nav`
 `;
 
 export const FooterLinks = styled.ul`
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     height: 54px;
     margin: 0;
@@ -19,7 +20,7 @@ export const FooterLinks = styled.ul`
 `;
 
 export const FooterLink = styled.li`
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
     list-style: none;
     display: flex;
     justify-content: center;

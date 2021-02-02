@@ -31,5 +31,33 @@ export const register = (userObj) => {
             })
             console.log("error from register", err)
         }
-    }
+    };
+
+
 }
+
+export const getUsers = () => (dispatch) => {
+    dispatch ({
+        type: actionTypes.GET_USERS_START
+    })
+    axios.get("/admin/users").then(res => {
+        if (res.status === 404) {
+            dispatch ({
+                type: actionTypes.GET_USERS_FAIL,
+                payload: res.data.message
+            })
+        } else {
+            dispatch ({
+                type: actionTypes.GET_USERS_SUCCESS,
+                payload: res.data
+            })
+        }
+        
+    })
+    .catch (err => {
+        dispatch ({
+            type: actionTypes.GET_USERS_FAIL,
+            payload: err
+        })
+    })
+};

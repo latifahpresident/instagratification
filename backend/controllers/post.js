@@ -61,6 +61,7 @@ exports.updatePost = async(req, res) => {
         caption: req.body.caption
     }
     const findPost = await Post.getPostBy(id);
+    console.log("updated post", post.image_url)
     try {
         if (!id || !post.image_url) {
             res.status(404).json({message: `Please login to update your post.`})

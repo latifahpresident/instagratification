@@ -2,12 +2,13 @@ import * as postsTypes from "./actionTypes";
 import axios from "./../../utilities/axiosinstance";
 
 export const getPosts = () => (dispatch) => {
-    console.log("page", page)
+    console.log("in acrion POSTS")
+
     dispatch ({
         type: postsTypes.GET_POSTS_START,
     })
     axios.get(`posts/posts`).then(res => {
-        console.log("TOP of GET POSTS", res)
+        console.log("TOP of GET POSTS", res.data)
         if (res.status === 404) {
             dispatch ({
                 type: postsTypes.GET_POSTS_FAIL,

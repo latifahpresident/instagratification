@@ -1,4 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from "react-redux";
+import {getPosts} from "./../../store/actions/posts";
+import {getUsers} from "./../../store/actions/user";
+
 import Followers from '../../components/Followers/Followers';
 import Posts from './../Posts/Posts';
 const followersData = [
@@ -87,10 +91,27 @@ const postData = [
    
 ]
 const Feed = () => {
+    const dispatch = useDispatch();
+    const posts = useSelector(state => state.posts.posts);
+    const userState = useSelector(state => state.user.users);
+
+    useEffect(() => {
+        console.log("in usee effect feed")
+        dispatch(getUsers())
+        dispatch(getPosts())
+
+        return () => {
+            console.log("unsubscribe ");
+          };
+    }, []);
+
+    // console.log("POSTATE from feed", postState)
+    console.log("usersTATE from feed", posts)
+
     return (
         <React.Fragment>
             <Followers followers={followersData}/>
-            <Posts posts={postData}/>
+            <Posts posts={posts}/>
         </React.Fragment>
     )
 };

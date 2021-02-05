@@ -21,7 +21,7 @@ getPost = () => {
 };
 
 editPost = (id, post) => {
-    return db("post").where({"firebase_id": id}).update(post);
+    return db("post").where({"id": id}).update(post);
 };
 
 deletePost = (id) => {

@@ -12,8 +12,9 @@ import Input from './../../containers/Forms/Comment';
 
 const PostCard = (props) => {
     const { post, handleLikeUnlike, likes, liked } = props
-   console.log("like from post card", likes)
+   console.log("like from post card", props)
     return (
+        
         <PostCardWrapper>
             <PostCardHeader>
                 <PostCardUserInfo >
@@ -25,7 +26,7 @@ const PostCard = (props) => {
              </IconButton>
             </PostCardHeader>
             <PostCardImage>
-                <img src={post.post_image} alt={post.username}/>
+                <img src={post.image_url} alt={post.username}/>
             </PostCardImage>
             <PostCardIconWrapper>
                 <div className="left">

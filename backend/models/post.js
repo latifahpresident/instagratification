@@ -16,12 +16,13 @@ getPost = () => {
         "post.image_url",  
         "post.caption", 
         "user.firebase_id",
-        "post.likes"
+        "post.likes",
+        "post.created_at",
         );
 };
 
 editPost = (id, post) => {
-    return db("post").where({"firebase_id": id}).update(post);
+    return db("post").where({"id": id}).update(post).returning('id');
 };
 
 deletePost = (id) => {

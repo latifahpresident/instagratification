@@ -25,11 +25,11 @@ exports.addPost = async(req, res) => {
 exports.getPosts = async(req, res) => {
     try {
         const posts = await Post.getPost();
-        // if (posts.length === 0) {
-        //     return res.status(404).json({message: `No posts found, please try again.`})
-        // } else {
+        if (posts.length === 0) {
+            return res.status(404).json({message: `No posts found, please try again.`})
+        } else {
             return res.status(200).json({posts: posts})
-        // }
+        }
     } catch(err) {
         res.status(500).json({message: "There was a problem getting your posts, please try again."})
         console.log("ERROR FROM UPDATE LIKE", err)
@@ -61,14 +61,17 @@ exports.updatePost = async(req, res) => {
         caption: req.body.caption
     }
     const findPost = await Post.getPostBy(id);
+    console.log("updated post", req.body.likes)
     try {
-        if (!id || !post.image_url) {
+        if (!id || !req.body.image_url) {
             res.status(404).json({message: `Please login to update your post.`})
         } else if (findPost.length === 0){
            res.status(404).json({message: `That post does not exists.`})
         } else {
-            await Post.editPost(id, post);
-            return res.status(201).json({message: `Your post has been updated!`})
+            const updatePost = await Post.editPost(id, req.body);
+            const getUpdatedPost = await Post.getPostBy(updatePost[0]);
+            console.log("updatePost from backend", getUpdatedPost)
+            return res.status(201).json({message: `Your post has been updated!`, updates: getUpdatedPost[0] })
         }
     } catch (err) {
         res.status(500).json({message: `An error occurred while updating your post: ${err.message}`})
@@ -97,13 +100,13 @@ exports.updatePostLike = async(req, res) => {
     }
     const findPost = await Post.getPostBy(id);
     try {
-        if (!id || !post.image_url) {
-            res.status(404).json({message: `Please login to update your post.`})
+        if (!id) {
+            res.status(404).json({message: `There was error, please try again.`})
         } else if (findPost.length === 0){
            res.status(404).json({message: `That post does not exists.`})
         } else {
             await Post.editPost(id, post);
-            return res.status(201).json({message: `Your post has been updated!`})
+            return res.status(201).json({message: `Liked!`})
         }
     } catch (err) {
         res.status(500).json({message: `An error occurred while updating your post: ${err.message}`})

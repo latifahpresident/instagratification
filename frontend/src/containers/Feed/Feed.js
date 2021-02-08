@@ -98,7 +98,7 @@ const Feed = () => {
     useEffect(() => {
         console.log("in usee effect feed")
         dispatch(getUsers())
-        dispatch(getPosts())
+        // dispatch(getPosts())
 
         return () => {
             console.log("unsubscribe ");

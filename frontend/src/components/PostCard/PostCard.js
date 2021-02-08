@@ -30,7 +30,7 @@ const PostCard = (props) => {
             </PostCardImage>
             <PostCardIconWrapper>
                 <div className="left">
-                    <ButtonIcon onClick={handleLikeUnlike}>
+                    <ButtonIcon onClick={() => handleLikeUnlike({id: post.id, image_url: post.image_url, likes: post.likes})}>
                         <FontAwesomeIcon icon={faHeart} className="icon, heart" size="lg" style={{color: liked ? `${likedColor}`: null}}/>
 
 
@@ -49,7 +49,7 @@ const PostCard = (props) => {
                 </div>
             </PostCardIconWrapper>
             <PostCardContent>
-                <SmallParagraph bold >{likes} likes</SmallParagraph>
+                <SmallParagraph bold >{post.likes} {post.likes === 1 ? `like` : `likes`}</SmallParagraph>
                 <div className="caption">
                     <SmallParagraph bold nomargin style={{marginRight: `.5rem`}}>{post.username}</SmallParagraph>
                     <SmallParagraph  nomargin>{post.caption}</SmallParagraph>

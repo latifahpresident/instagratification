@@ -27,3 +27,30 @@ export const getPosts = () => (dispatch) => {
         })
     })
 };
+
+export const updatePosts = (updates) => (dispatch) => {
+    const id = updates.id;
+    console.log("updates " ,updates)
+    dispatch ({
+        type: postsTypes.UPDATE_POSTS_START,
+    })
+    axios.put(`/posts/update/${id}`, {...updates}).then(res => {
+        if (res.status === 404) {
+            dispatch({
+                type: postsTypes.UPDATE_POSTS_FAIL,
+                payload: res.data.message
+            })
+        } else if (res.status === 201) {
+            const message = res.data.message
+            dispatch({
+                type: postsTypes.UPDATE_POSTS_SUCCESS,
+                payload: {updates: res.data.updates, id, message}, 
+            })
+        }
+    }).catch (err => {
+        dispatch({
+            type: postsTypes.UPDATE_POSTS_FAIL,
+            payload: err
+        })
+    }) 
+};

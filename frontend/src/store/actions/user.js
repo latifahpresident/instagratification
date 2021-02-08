@@ -80,6 +80,7 @@ export const getUsersById = (id) => async dispatch => {
     dispatch (start(actionTypes.GET_USERS_BY_ID_START))
    try {
     const res = await axios.get(`/user/profile/${id}`);
+    console.log("response from get by id", id)
     if (res.status === 404) { dispatch (fail(actionTypes.GET_USERS_BY_ID_FAIL, res.data.message)) } 
     else { dispatch (success(actionTypes.GET_USERS_BY_ID_SUCCESS, res.data)) }
    }

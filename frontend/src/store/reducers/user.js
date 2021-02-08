@@ -2,13 +2,12 @@ import * as actionTypes from './../actions/actionTypes';
 
 const intialState = {
     loading: false,
-    loggedIn: false,
+    users:  [],
+    followers: [],
+    posts: [],
     error: false,
     errorMsg: null,
     successMsg: null,
-    users:  [],
-    followers: [],
-    posts: []
 }
 
 export default (state=intialState, actions) => {

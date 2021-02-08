@@ -1,6 +1,18 @@
 import * as actionTypes from './actionTypes';
 import axios from "./../../utilities/axiosinstance";
 
+export const start = (type) => {
+    return { type: type }
+}
+
+export const success = (type, data) => {
+    return { type: type, payload: data }
+}
+
+export const fail = (type, err) => {
+    return { type: type, payload: err }
+}
+
 export const register = (userObj) => {
     const data = {
         email: userObj.email,
@@ -37,7 +49,9 @@ export const register = (userObj) => {
 }
 
 export const getUsers = () => (dispatch) => {
-    dispatch ({
+    dispatch (
+        
+        {
         type: actionTypes.GET_USERS_START
     })
     axios.get("/admin/users").then(res => {
@@ -60,4 +74,16 @@ export const getUsers = () => (dispatch) => {
             payload: err
         })
     })
+};
+
+export const getUsersById = (id) => async dispatch => {
+    dispatch (start(actionTypes.GET_USERS_BY_ID_START))
+   try {
+    const res = await axios.get(`/user/profile/${id}`);
+    if (res.status === 404) { dispatch (fail(actionTypes.GET_USERS_BY_ID_FAIL, res.data.message)) } 
+    else { dispatch (success(actionTypes.GET_USERS_BY_ID_SUCCESS, res.data)) }
+   }
+    catch (err) {
+        dispatch (fail(actionTypes.GET_USERS_BY_ID_FAIL, err))
+    }
 };

@@ -14,6 +14,7 @@ export const fail = (type, err) => {
 }
 
 export const register = (userObj) => {
+    console.log("USER OBBJ FROM REGISTER", userObj)
     const data = {
         email: userObj.email,
         firebase_id: userObj.firebase_id,

@@ -7,7 +7,6 @@ import Button from './../UI/Buttons/Button';
 const NavigationItems = () => {
     return (
         <Navigation>
-            
             <ul>
                 <NavigationItem link='/' exact><Logo/></NavigationItem>
                 <div className='navigation-links'>
@@ -18,10 +17,8 @@ const NavigationItems = () => {
                     />
                     <NavigationItem className='signup-link' link='/signup' exact>SignUp</NavigationItem>
                 </div>
-                
             </ul>
         </Navigation>
-      
     )
 };
 

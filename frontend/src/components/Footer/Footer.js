@@ -40,7 +40,7 @@ const Footer = () => {
             <FooterLinks>
                 {linkData.map(link => (
                     <FooterLink>
-                    <a href={`/${link.route}`}><FontAwesomeIcon icon={link.icon} className="icon"/></a>
+                    <a href={`${link.route}`}><FontAwesomeIcon icon={link.icon} className="icon"/></a>
                 </FooterLink>
                 ))}
                 

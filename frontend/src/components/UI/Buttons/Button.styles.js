@@ -8,9 +8,10 @@ export const Button = styled.button`
     height: 30.81px;
     font-weight: 600;
     font-size: 0.875rem;
-    width: 70px;
+    width: ${props => props.size === 'lg' ? `80%` : '70px'};
     border-radius: 4px;
-    margin-left: .15rem;
+    /* margin-left: .15rem; */
+    margin-right: ${props => props.nomargin ? '0' : '2rem'};
 `;
 
 

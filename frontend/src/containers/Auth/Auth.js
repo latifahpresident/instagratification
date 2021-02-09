@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import { register } from '../../store/actions/user';
 import Input from './../../components/UI/Input/Input';
+import AuthWrapper from './../../components/Auth/Auth';
 
 const Auth = () => {
  const dispatch = useDispatch();
@@ -106,12 +107,12 @@ const Auth = () => {
     ))
     return (
         
-        <div>
+        <AuthWrapper>
             <form onSubmit={handleSubmit}>
                     {form}
                 <button>Sign up</button>
             </form>
-        </div>
+        </AuthWrapper>
     )
 };
 

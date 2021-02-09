@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { primaryBlue } from './../../../global-styles/global.styles';
 
-console.log('primaryBlue', primaryBlue)
 export const NavItem = styled.li`
     list-style-type: none;
     text-decoration: none;

@@ -2,10 +2,10 @@ import React from 'react';
 import { Button } from './Button.styles';
 
 const ButtonComponent = (props) => {
-    const { className, type, text } = props
-    console.log(props.className)
+    const { className, type, text, size } = props
+    console.log('TEXT FROM BUTTON')
     return (
-        <Button btnColor={className} type={type} >{text}</Button>
+        <Button nomargin size={size} btnColor={className} type={type}>{text}</Button>
     )
 };
 

@@ -1,10 +1,11 @@
 import React from 'react';
+import {FormInput} from './Input.styles';
 
 const Input = (props) => {
     let inputElement = null;
     switch (props.elementType) { // text, email, selector
         case('input'):
-            inputElement = <input 
+            inputElement = <FormInput 
                 {...props.elementConfig} 
                 value={props.value}
                 onChange={props.changed}
@@ -17,7 +18,7 @@ const Input = (props) => {
             onChange={props.changed}
             />
             break;
-        default: inputElement = <input 
+        default: inputElement = <FormInput 
             {...props.elementConfig} 
             value={props.value}
             onChange={props.changed}
@@ -25,7 +26,6 @@ const Input = (props) => {
     }
     return (
         <div>
-            {/* <label>{props.label}</label> */}
             {inputElement}
         </div>
     )

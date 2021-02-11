@@ -1,20 +1,24 @@
 import React from 'react';
-import { AuthWrapper, AuthFormWrapper, AuthFormHeading} from './Auth.styles';
+import { withRouter } from 'react-router-dom';
+import { AuthWrapper, AuthFormWrapper, AuthFormHeading, AuthFormInputs, AuthFormLogin} from './Auth.styles';
 import Logo from './../Logo/Logo';
-import ButtonComponent from '../UI/Buttons/Button';
+import Button from '../UI/Buttons/Button';
+import { SmallParagraph } from '../../global-styles/global.styles';
 
 const Auth = (props) => {
+    const pathname = props.location.pathname;
     return (
         <AuthWrapper>
             <AuthFormWrapper>
-                <div class='top'>
+                <div className='top'>
                     <Logo/>
-                    <AuthFormHeading> Sign up to see photos and videos from your friends.</AuthFormHeading>
-                    <ButtonComponent 
+                    <AuthFormHeading className='bold'> {pathname === '/signin' ? `Sign in`  : pathname === '/signup' ? `Sign up` : null} to see photos and videos <br/> from your friends.</AuthFormHeading>
+                    <Button 
                         className='primary' 
                         type='submit'
-                        text='Log in with Facebook'
+                        // text={` Log in with Facebook` }
                         size='lg'
+                        text={'Log in with Facebook' }
                     />
 
                     <div className='orSection'>
@@ -24,11 +28,16 @@ const Auth = (props) => {
 
                     </div>
                 </div>
-               
+               <AuthFormInputs>
                 {props.children}
+               </AuthFormInputs>
+               <AuthFormLogin>
+                   <SmallParagraph> {pathname === '/signin' ? `Don't have an account?`  : pathname === '/signup' ? `Have an account?` : null} 
+                   <a href={pathname === '/signin' ? `/signup`  : pathname === '/signup' ? `/signin` : null}>{pathname === '/signin' ? `Sign up`  : pathname === '/signup' ? `Log in` : null}</a></SmallParagraph>
+               </AuthFormLogin>
             </AuthFormWrapper>
         </AuthWrapper>
     )
 };
 
-export default Auth;
+export default withRouter(Auth);

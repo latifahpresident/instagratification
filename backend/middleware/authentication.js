@@ -14,7 +14,7 @@ const auth = async (req, res, next) => {
     const idToken = req.headers.authorization;
     try {
         if (idToken) {
-            const decodedIdToken = await admin.auth().verifyIdToken();
+            const decodedIdToken = await admin.auth().verifyIdToken(idToken);
             req.user = decodedIdToken;
             return next();
         } else {
@@ -22,9 +22,9 @@ const auth = async (req, res, next) => {
                 message: "Log in and provide token to view this content."
               });
         }
-        
     } catch (err) {
-        res.status(500).json({message: "There was an error authentication your account."})
+        console.log("authentication error", err)
+        res.status(500).json({message: "There was an error authenticating your account."})
     }
   };
 

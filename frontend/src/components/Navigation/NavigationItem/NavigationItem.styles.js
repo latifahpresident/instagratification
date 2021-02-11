@@ -10,5 +10,6 @@ export const NavItem = styled.li`
         /* border: 1px solid green; */
         font-weight: 600;
         font-size: .8rem;
+        margin-left: 1rem;
     }
 `;

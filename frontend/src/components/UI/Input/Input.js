@@ -9,6 +9,9 @@ const Input = (props) => {
                 {...props.elementConfig} 
                 value={props.value}
                 onChange={props.changed}
+                invalid={props.invalid}
+                shouldValidate={props.shouldValidate}
+                touched={props.touched}
             />
             break;
         case ('textarea'):
@@ -16,17 +19,31 @@ const Input = (props) => {
             {...props.elementConfig} 
             value={props.value}
             onChange={props.changed}
+            invalid={props.invalid}
+            shouldValidate={props.shouldValidate}
+            touched={props.touched}
+
             />
             break;
         default: inputElement = <FormInput 
             {...props.elementConfig} 
             value={props.value}
             onChange={props.changed}
+            invalid={props.invalid}
+            shouldValidate={props.shouldValidate}
+            touched={props.touched}
+
         />
+    }
+
+    let validationError = null;
+    if (props.invalid && props.touched) {
+        validationError = <p>Please enter a valid value!</p>;
     }
     return (
         <div>
             {inputElement}
+            {validationError}
         </div>
     )
 };

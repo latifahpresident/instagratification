@@ -6,8 +6,7 @@ import { faPlayCircle, faUserCircle } from '@fortawesome/free-regular-svg-icons'
 import {useSelector} from "react-redux";
 
 const Footer = () => {
-    const id = useSelector(state => state.user.users)
-    console.log("id", id)
+    const id = useSelector(state => state.user.firebase_id);
     const linkData = [
         {
             icon: faHome,
@@ -32,14 +31,14 @@ const Footer = () => {
         {
             icon: faUserCircle,
             name: "profile",
-            route: `/${id}`
+            route: `/profile/${id}`
         },
     ]
     return (
         <FooterNav>
             <FooterLinks>
-                {linkData.map(link => (
-                    <FooterLink>
+                {linkData.map((link, index) => (
+                    <FooterLink  key={index}>
                     <a href={`${link.route}`}><FontAwesomeIcon icon={link.icon} className="icon"/></a>
                 </FooterLink>
                 ))}

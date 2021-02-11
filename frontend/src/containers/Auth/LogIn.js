@@ -1,14 +1,12 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import { auth } from '../../utilities/firebaseConfig';
-import { register } from '../../store/actions/user';
 import Input from './../../components/UI/Input/Input';
 import AuthWrapper from './../../components/Auth/Auth';
 import ButtonComponent from '../../components/UI/Buttons/Button';
 
 const Auth = (props) => {
- const dispatch = useDispatch();
-    const [state, setState] = useState(
+ const [state, setState] = useState(
         {
             controls: {
                 email: {
@@ -23,35 +21,6 @@ const Auth = (props) => {
                     },
                     valid: false,
                     touched: false,
-                },
-                full_name: {
-                    elementType: 'input',
-                    elementConfig: {
-                        type: 'text',
-                        placeholder: 'Full Name'
-                    },
-                    value: '',
-                    validation: {
-                        required: true,
-                        minLength: 3,
-                    },
-                    valid: false,
-                    touched: false
-                },
-                username: {
-                    elementType: 'input',
-                    elementConfig: {
-                        type: 'text',
-                        placeholder: 'Username'
-                    },
-                    value: '',
-                    validation: {
-                        required: true,
-                        minLength: 3,
-                        maxLength: 15,
-                    },
-                    valid: false,
-                    touched: false
                 },
                 password: {
                     elementType: 'input',
@@ -88,46 +57,31 @@ const Auth = (props) => {
     const [error, setError] = useState(false);
     const [errorMsg, setErrorMsg] = useState('');
 
-   const signUpWithEmailPassword = (formData) => {
-        const  email  = formData.email;
-        const  password  = formData.password;
-        if (!email || !password) {
-            setError(true);
-            setErrorMsg('Please enter a valid email')
-        } 
-        auth.createUserWithEmailAndPassword(email, password)
-        .then(({ user }) => {
-          if (user) {
-            if (user.email) {
-              const { email, uid } = user;
-              const userObj = {
-                email,
-                firebase_id: uid,
-                full_name: formData.full_name,
-                username: formData.username,
-                profile_url: formData.profile_url
-                };
-                console.log("userObj", userObj)
-                dispatch(register(userObj))
-                props.history.push(`/profile/${uid}`)
-            }
-          }
-        })
-        .catch(err => {
-          console.log("Error Authenticating User:", err)
-          setError(true)
-          setErrorMsg(err.message)
-        })
-    };
+
+
+    const  signIn = (formData) => {
+         auth.signInWithEmailAndPassword(formData.email, formData.password)
+         .then(({user}) => {
+             if (user) {
+                 props.history.push(`/profile/${user.uid}`)
+             } else {
+                setError(true)
+                setErrorMsg('There was an error signing in.')
+             }
+         })
+         .catch(err => {
+            setError(true)
+            setErrorMsg(err.message)
+         })
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const formData = {profile_url: "https://s3.amazonaws.com/uifaces/faces/twitter/bergmartin/128.jpg"}
-        console.log("FORM DATA FROM HANDLER", formData)
         for (let formElementIdentifier in state.controls) {
             formData[formElementIdentifier] = state.controls[formElementIdentifier].value
         }
-        signUpWithEmailPassword(formData);
+       signIn(formData);
        
     };
 
@@ -164,11 +118,11 @@ const Auth = (props) => {
             shouldValidate={formElement.config.validation}
             touched={formElement.config.touched}
             error={error}
+            errorMsg={errorMsg}
             changed={ (event) => inputChangeHandler(event, formElement.id)}
         />
     ))
 
-    console.log("error msg", errorMsg)
     return (
         
         <AuthWrapper>
@@ -176,7 +130,7 @@ const Auth = (props) => {
                     {form}
                 <ButtonComponent
                     className='primary'
-                    text={'Sign up'}
+                    text={'Sign In'}
                     size={'xl'}
                 />
             </form>
@@ -184,4 +138,4 @@ const Auth = (props) => {
     )
 };
 
-export default Auth;
+export default withRouter(Auth);

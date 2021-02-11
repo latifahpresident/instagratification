@@ -8,7 +8,7 @@ export const darkGrayColor ='#837d7d';
 
 export const MainWrapper = styled.main`
     /* border: 1px solid red; */
-    margin: 4rem 0;
+    /* margin: 4rem 0; */
 
 `;
 export const ButtonIcon = styled.button`

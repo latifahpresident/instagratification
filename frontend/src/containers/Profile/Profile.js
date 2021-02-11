@@ -1,23 +1,19 @@
-import React, {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import { getUsersById } from "../../store/actions/user";
+import React from "react";
+import {useSelector} from "react-redux";
 
 const Profile = (props) => {
-    const dispatch = useDispatch()
     const user = useSelector(state => state.user.users);
+    const loading = useSelector(state => state.user.loading)
     const posts = useSelector(state => state.user.posts);
     const followers = useSelector(state => state.user.followers);
-    const { id } = props.match.params;
-    console.log("user FROM PROFILE", user)
-
-    useEffect(() => {
-        dispatch(getUsersById("04"))
-        console.log("render")
-    }, [dispatch]);
 
     return (
-        <div>profile!</div>
+        <div style={{border: '1px solid orange', marginTop: '6rem', height: '500px'}}>
+            { loading ? `loading` : user.map((item, index)=> (
+            <h1 key={index}>{item.username}</h1>
+        ))}
+        </div>
     )
 };
 
-export default Profile
+export default Profile;

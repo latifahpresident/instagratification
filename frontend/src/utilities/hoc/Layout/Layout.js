@@ -6,15 +6,14 @@ import Footer from './../../../components/Footer/Footer';
 import {MainWrapper} from './../../../global-styles/global.styles';
 
 const Layout = (props) => {
-    console.log("props.match.url ", props )
     return (
         <Aux>
-            {props.location.pathname === '/signup' ? null : <Navigation/> }
+            {props.location.pathname === '/signup' || props.location.pathname  ===  '/signin'  ? null : <Navigation/> }
             
              <MainWrapper >
                 {props.children}
             </MainWrapper>
-            <Footer/>
+            {props.location.pathname === '/signup' || props.location.pathname === '/signin' ? null : <Footer/> }
         </Aux>
 
     )

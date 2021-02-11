@@ -1,5 +1,5 @@
 import React from 'react';
-import InstaLogo from './../../assets/images/instalogo.png';
+import InstaLogo from './../../assets/images/instagram-login-logo.png';
 import { LogoContainer } from './Logo.styles';
 
 const Logo = () => {

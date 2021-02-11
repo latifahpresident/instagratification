@@ -3,37 +3,43 @@ import {FooterNav, FooterLinks, FooterLink} from "./Footer.styles";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { faPlayCircle, faUserCircle } from '@fortawesome/free-regular-svg-icons';
+import {useSelector} from "react-redux";
 
 const Footer = () => {
-
+    const id = useSelector(state => state.user.firebase_id);
     const linkData = [
         {
             icon: faHome,
-            name: "home"
+            name: "home",
+            route: `/`
         },
         {
             icon: faSearch,
-            name: "search"
+            name: "search",
+            route: `/search`
         },
         {
             icon: faPlayCircle,
-            name: "reels"
+            name: "reels",
+            route: `/shop`
         },
         {
             icon: faShoppingBag,
-            name: "shop"
+            name: "shop",
+            route: `/shop`
         },
         {
             icon: faUserCircle,
-            name: "profile"
+            name: "profile",
+            route: `/profile/${id}`
         },
     ]
     return (
         <FooterNav>
             <FooterLinks>
-                {linkData.map(link => (
-                    <FooterLink>
-                    <a href={`/${link.name}`}><FontAwesomeIcon icon={link.icon} className="icon"/></a>
+                {linkData.map((link, index) => (
+                    <FooterLink  key={index}>
+                    <a href={`${link.route}`}><FontAwesomeIcon icon={link.icon} className="icon"/></a>
                 </FooterLink>
                 ))}
                 

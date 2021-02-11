@@ -2,6 +2,14 @@ export const AUTH_START = 'AUTH_START';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAIL = 'AUTH_FAIL';
 
+export const SIGNOUT_START = 'SIGNOUT_START';
+export const SIGNOUT_SUCCESS = 'SIGNOUT_SUCCESS';
+export const SIGNOUT_FAIL = 'SIGNOUT_FAIL';
+
+export const SIGNIN_START = 'SIGNIN_START';
+export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
+export const SIGNIN_FAIL = 'SIGNIN_FAIL';
+
 export const REGISTER_START = 'REGISTER_START';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
@@ -18,3 +26,6 @@ export const GET_USERS_START = 'GET_USERS_START';
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const GET_USERS_FAIL = 'GET_USERS_FAIL';
 
+export const GET_USER_BY_ID_START = 'GET_USER_BY_ID_START';
+export const GET_USER_BY_ID_SUCCESS = 'GET_USER_BY_ID_SUCCESS';
+export const GET_USER_BY_ID_FAIL = 'GET_USER_BY_ID_FAIL';

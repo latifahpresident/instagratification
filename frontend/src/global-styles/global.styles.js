@@ -4,10 +4,11 @@ export const primaryBlue = '#0096F6';
 export const grayBorder = '#DBDBDB';
 export const likedColor = '#ED4956';
 export const paddingLR = '.5rem';
+export const darkGrayColor ='#837d7d';
 
 export const MainWrapper = styled.main`
     /* border: 1px solid red; */
-    margin: 4rem 0;
+    /* margin: 4rem 0; */
 
 `;
 export const ButtonIcon = styled.button`
@@ -33,3 +34,4 @@ export const SmallParagraph = styled.p`
     font-weight: ${props => props.bold ? 600 : `normal`};
     margin: ${props => props.nomargin ? 0 : null};
 `;
+

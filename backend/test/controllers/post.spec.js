@@ -1,7 +1,6 @@
 const server = require("../../app");
 const request = require('supertest');
 const db = require("../../dbconfig");
-const { default: expectCt } = require("helmet/dist/middlewares/expect-ct");
 
 const errorHandler = (err) => {
     console.error(err);

@@ -11,7 +11,7 @@ import Input from './../../containers/Forms/Comment';
 
 
 const PostCard = (props) => {
-    const { post, handleLikeUnlike, likes, liked } = props
+    const { post, handleLikeUnlike, liked } = props
    console.log("like from post card", props)
     return (
         

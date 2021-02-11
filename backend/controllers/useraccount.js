@@ -34,25 +34,19 @@ exports.editUser = async(req, res) => {
 //Get a user's profile
 exports.getById = async(req, res) => {
     const { id } = req.params;
-    // const comments = [
-    //     {
-    //         author: "test",
-    //         comment: "test comment"
-    //     }
-    // ]
     try {
         if (!id) {
             res.status(404).json({message: `User not found. Please try again.`})
-        } else {
+        }
+        else {
             const user = await User.getById(id);
-            const followers = await Follow.getFollowers(id);
-            const posts = await Post.getUserPost(id);
-            res.status(200).json(
-                {
-                     user,
-                    followers: followers, 
-                    posts: posts, 
-                })
+            if (user.length === 0) {
+                res.status(404).json({message: `User not found. Please try again.`})
+            } else {
+                const followers = await Follow.getFollowers(id);
+                const posts = await Post.getUserPost(id);
+                res.status(200).json({ user,followers: followers, posts: posts })
+            }
         }
     } catch (err) {
         res.status(500).json({message: `There was error getting to your profile, please try again. ${err.message}` })

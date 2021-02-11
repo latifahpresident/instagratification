@@ -3,13 +3,9 @@ import { grayBorder} from './../../global-styles/global.styles';
 
 export const FollowersSection = styled.section`
     border-bottom: 1px solid ${grayBorder};
-    /* margin-top: .2rem; */
+    margin-top: 4rem;
     border-radius: 3px;
-    /* min-height: 110px;
-    max-height: 110px; */
     /* border: 1px solid orange; */
-    margin: 0;
-    /* margin-bottom: 1rem; */
     display: flex;    
 `;
 

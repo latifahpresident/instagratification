@@ -33,7 +33,11 @@ const Auth = (props) => {
                </AuthFormInputs>
                <AuthFormLogin>
                    <SmallParagraph> {pathname === '/signin' ? `Don't have an account?`  : pathname === '/signup' ? `Have an account?` : null} 
-                   <a href={pathname === '/signin' ? `/signup`  : pathname === '/signup' ? `/signin` : null}>{pathname === '/signin' ? `Sign up`  : pathname === '/signup' ? `Log in` : null}</a></SmallParagraph>
+                   { pathname === '/signin' ?  <a href="/signup">Sign up</a> : <a href="signin">Log in</a>}
+                   {/* <a href={pathname === '/signin' ? `/signup`  : 
+                   pathname === '/signup' ? `/signin` : null}>
+                       {pathname === '/signin' ? `Sign up`  : pathname === '/signup' ? `Log in` : null}</a> */}
+                    </SmallParagraph>
                </AuthFormLogin>
             </AuthFormWrapper>
         </AuthWrapper>

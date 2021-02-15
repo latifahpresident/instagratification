@@ -7,12 +7,17 @@ const Profile = () => {
     const loading = useSelector(state => state.user.loading)
     const posts = useSelector(state => state.user.posts);
     const followers = useSelector(state => state.user.followers);
+console.log("posts from profile", posts.length)
+console.log("followers from profile", followers)
 
     return (
         <div >
-            { loading ? `loading` : user.map((item, index)=> (
+            { user.map((item, index)=> (
             <ProfileComponent
+                key={index}
                 user={item}
+                posts={posts}
+                followers={followers}
             />
         ))}
         </div>

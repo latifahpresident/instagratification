@@ -35,4 +35,35 @@ export const HeaderNavigation = styled.div`
 
 export const HeaderContent = styled.div`
     display: flex;
+    /* border: 1px solid; */
+    width: 90%;
+    margin-top: 2rem;
+    padding: 0 1rem;
+    .userInfo {
+        display: flex;
+        flex-direction: column;
+    }
+
+`;
+
+export const HeaderUserContent = styled.div`
+        display: flex;
+        flex-direction: column;
+        /* border: 1px solid hotpink; */
+        width: 25%;
+`;
+
+export const HeaderFollowersContent = styled.div`
+        display: flex;
+        flex-direction: column;
+        /* border: 1px solid green; */
+        margin-left: 2rem;
+        p {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        span {
+            font-weight: 700;
+        }
 `;

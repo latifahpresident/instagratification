@@ -1,10 +1,12 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { HeaderContent, HeaderNavigation, HeaderWrapper, HeaderUserContent, HeaderFollowersContent } from './Header.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faBars, faChevronDown, } from '@fortawesome/free-solid-svg-icons';
 import BadgeAvatar from '../../Avatar/BadgeAvatar';
 import { SmallParagraph } from '../../../global-styles/global.styles';
+import { useDispatch, useSelector } from 'react-redux'
+import { signOut } from '../../../store/actions/user';
 
 const  ProfileHeader = (props) => {
     const followers = useSelector(state => state.user.followers);
@@ -13,6 +15,18 @@ const  ProfileHeader = (props) => {
     const { user} = props;
 console.log("followers from header", followers)
 
+const loggedIn = useSelector(state => state.user.loggedIn);
+const dispatch = useDispatch();
+
+const handleSignOut = () => {
+    if (loggedIn === true ) {
+        dispatch(signOut());
+        props.history.push('/');
+    } else if (loggedIn === false) {
+        props.history.push('/signin');
+    }
+       
+};
     return (
         <HeaderWrapper>
             <HeaderNavigation>
@@ -20,6 +34,7 @@ console.log("followers from header", followers)
                 <div className='icons'>
                     <FontAwesomeIcon icon={faPlus} size={'lg'} className='icon'/>
                     <FontAwesomeIcon icon={faBars} size={'lg'} className='icon'/>
+<button onClick={handleSignOut}>log out</button>
                 </div>
             </HeaderNavigation>
             <HeaderContent>
@@ -49,4 +64,4 @@ console.log("followers from header", followers)
     )
 };
 
-export default ProfileHeader;
+export default withRouter(ProfileHeader);

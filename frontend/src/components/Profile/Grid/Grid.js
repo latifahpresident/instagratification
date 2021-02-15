@@ -9,7 +9,7 @@ const Grid = () => {
     return (
         <GridWrapper>
             {posts.map(post => (
-                 <GridImage>
+                 <GridImage key={post.id}>
                      { loading ? <Skeleton variant="rect" width={120} height={120} /> : 
                      <img src={post.image_url} alt={post.caption}/> }
                      

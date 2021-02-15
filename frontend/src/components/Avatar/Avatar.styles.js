@@ -16,23 +16,19 @@ export const AvatarContainer = styled.div`
         width: 52px;
         border: 3px solid white;
     }
-    /* .small {
-      height: 31px;
-      width: 31x;
-      display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 1.2rem;
-    height: 30px;
-    width: 30px;
-    margin-bottom: 1rem;
-    }
-    .large {
-      height: 56px;
-      width: 56px;
-    } */
-
     .cardAvatar {
       margin-left: .5rem;
+    }
+`;
+
+export const BadgeContainer = styled.div`
+  border: 1px solid transparent;
+  width: 67.5px;
+  height: 67.5px;
+  
+  .avatarImage {
+    width: 66.5px;
+  height: 66.5px;
+        border: 3px solid white;
     }
 `;

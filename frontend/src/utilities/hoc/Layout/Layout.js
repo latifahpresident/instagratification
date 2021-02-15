@@ -1,14 +1,17 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Aux from './../Aux/Aux';
 import Navigation from './../../../components/Navigation/NavigationItems';
 import Footer from './../../../components/Footer/Footer';
 import {MainWrapper} from './../../../global-styles/global.styles';
 
 const Layout = (props) => {
+    const id = useSelector(state => state.user.firebase_id)
+    console.log("props pathname", props)
     return (
         <Aux>
-            {props.location.pathname === '/signup' || props.location.pathname  ===  '/signin'  ? null : <Navigation/> }
+            {props.location.pathname === '/signup' || props.location.pathname  ===  '/signin' || props.location.pathname  ===  `/profile/${id}` ? null : <Navigation/> }
             
              <MainWrapper >
                 {props.children}

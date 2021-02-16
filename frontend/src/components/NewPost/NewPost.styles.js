@@ -7,7 +7,18 @@ export const NewPostWrapper = styled.section`
 
 export const NewPostNavigation = styled.header`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: black;
     color: white;
+`;
+
+export const NewPostHeader = styled.h1`
+    color: white;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    /* border: 1px solid white; */
+    padding-top: .2rem;
 `;

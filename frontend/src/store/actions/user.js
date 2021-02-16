@@ -4,15 +4,15 @@ import {auth} from "./../../utilities/firebaseConfig";
 
 export const start = (type) => {
     return { type: type }
-}
+};
 
 export const success = (type, data) => {
     return { type: type, payload: data }
-}
+};
 
 export const fail = (type, err) => {
     return { type: type, payload: err }
-}
+};
 
 export const authenticateUser = (uid, idToken) => async dispatch => {
     dispatch(start(actionTypes.AUTH_START));
@@ -78,10 +78,7 @@ export const register = (userObj) => async dispatch => {
             dispatch(fail(actionTypes.REGISTER_FAIL, err))
             console.log("error from register", err)
         }
-    
-
-
-}
+};
 
 export const getUsers = () => (dispatch) => {
     dispatch (

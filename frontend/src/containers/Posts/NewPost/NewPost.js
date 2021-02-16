@@ -1,6 +1,7 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import ButtonComponent from '../../../components/UI/Buttons/Button';
+import NewPostComponent from './../../../components/NewPost/NewPosts';
 
 const NewPost = (props) => {
     const id = useSelector(state => state.user.firebase_id)

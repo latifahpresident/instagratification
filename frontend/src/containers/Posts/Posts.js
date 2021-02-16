@@ -3,10 +3,9 @@ import PostCard from "./../../components/PostCard/PostCard";
 import {useSelector, useDispatch} from "react-redux";
 import {updatePosts, getPosts} from "./../../store/actions/posts";
 
-const Posts = (props) => {
+const Posts = () => {
     const dispatch = useDispatch();
     const posts = useSelector(state => state.posts.posts);
-    const loading = useSelector(state => state.posts.loading);
     const [newLikes, setLikes] = useState(0);
     const [liked, setLiked] = useState(false);
 

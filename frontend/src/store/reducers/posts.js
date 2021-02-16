@@ -4,11 +4,12 @@ const intialState = {
     posts: [],
     loading: false,
     error: false,
-    errorMsg: null
+    errorMsg: null,
+    successMsg: null,
 }
 
-export default (state=intialState, actions) => {
-    switch(actions.type) {
+export default (state=intialState, action) => {
+    switch(action.type) {
         case actionTypes.GET_POSTS_START:
             return {
                 ...state,
@@ -18,7 +19,7 @@ export default (state=intialState, actions) => {
             return {
                 ...state,
                 loading: false,
-                posts: state.posts.concat(actions.payload.posts),
+                posts: state.posts.concat(action.payload.posts),
             }
         case actionTypes.GET_POSTS_FAIL:
 
@@ -26,19 +27,19 @@ export default (state=intialState, actions) => {
                 ...state,
                 loading: false,
                 error: true,
-                errorMsg: actions.payload,
+                errorMsg: action.payload,
             }
-            case actionTypes.UPDATE_POSTS_START:
-            return {
-                ...state,
-                loading: true,
-            }
+        case actionTypes.UPDATE_POSTS_START:
+        return {
+            ...state,
+            loading: true,
+        }
         case actionTypes.UPDATE_POSTS_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 posts: state.posts.map(item =>
-                    item.id === actions.payload.id ? actions.payload.updates : item,
+                    item.id === action.payload.id ? action.payload.updates : item,
                     ),
             }
         case actionTypes.UPDATE_POSTS_FAIL:
@@ -46,7 +47,25 @@ export default (state=intialState, actions) => {
                 ...state,
                 loading: false,
                 error: true,
-                errorMsg: actions.payload,
+                errorMsg: action.payload,
+            }
+        case actionTypes.NEW_POSTS_START:
+            return {
+                ...state,
+                loading: true,
+            }
+        case actionTypes.NEW_POSTS_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                successMsg: action.payload.message,
+            }
+        case actionTypes.NEW_POSTS_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: true,
+                errorMsg: action.payload.message,
             }
     default:
         return state;

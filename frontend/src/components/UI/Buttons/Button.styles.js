@@ -14,4 +14,21 @@ export const Button = styled.button`
     margin-right: ${props => props.nomargin ? '0' : '2rem'};
 `;
 
+export const LinkButtonWrapper = styled.button`
+    background-color: none;
+    display: flex;
+    color: ${props => props.btnColor ? props.btnColor  : `black`};
+    justify-content: space-between;
+    margin-top: .3rem;
+    width: auto;
+    margin-right: .6rem;
+    height: auto;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    /* width: ${props => props.size === 'lg' ? `80%` : props.size === 'xl' ?  `100%`: '70px'}; */
 
+`;

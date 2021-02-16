@@ -17,10 +17,8 @@ export default (state=intialState, actions) => {
         case actionTypes.GET_POSTS_SUCCESS:
             return {
                 ...state,
-                // updateObject(state, {})
                 loading: false,
-                posts: state.posts.concat(actions.payload.posts)
-
+                posts: state.posts.concat(actions.payload.posts),
             }
         case actionTypes.GET_POSTS_FAIL:
 
@@ -28,7 +26,7 @@ export default (state=intialState, actions) => {
                 ...state,
                 loading: false,
                 error: true,
-                errorMsg: actions.payload
+                errorMsg: actions.payload,
             }
             case actionTypes.UPDATE_POSTS_START:
             return {

@@ -43,18 +43,11 @@ const Feed = () => {
     const posts = useSelector(state => state.posts.posts);
 
     useEffect(() => {
-        console.log("in usee effect feed")
-        dispatch(getUsers())
-        // dispatch(getPosts())
-
+        dispatch(getUsers());
         return () => {
             console.log("unsubscribe ");
           };
     }, [dispatch]);
-
-    // console.log("POSTATE from feed", postState)
-    console.log("usersTATE from feed", posts)
-
     return (
         <React.Fragment>
             <Followers followers={followersData}/>

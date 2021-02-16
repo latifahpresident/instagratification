@@ -7,8 +7,8 @@ const Followers = (props) => {
     return (
         <FollowersSection>
             <FollowersList>
-                {followers.map(follower => (
-                     <FollowesListItem key={follower.firebase_id}>
+                {followers.map((follower, index) => (
+                     <FollowesListItem key={index}>
                     <Avatar username={follower.username} profile_url={follower.profile_url} size="large"/>
                      <p className="avatarUsername">{  follower.username }</p>
                  </FollowesListItem>

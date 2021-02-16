@@ -22,7 +22,9 @@ productionPg = {
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database_url: process.env.DATABASE_URL,
-  ssl: true
+  ssl: {
+    rejectUnauthorized: false
+  },
 }
 module.exports = {
 

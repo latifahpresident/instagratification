@@ -15,6 +15,14 @@ testPg = {
   password: process.env.TEST_DATABASE_PASSWORD,
   database_url: process.env.TEST_DATABASE_URL
 }
+
+productionPg = {
+  host: process.env.DATABASE_HOST,
+  database: process.env.DATABASE,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database_url: process.env.DATABASE_URL
+}
 module.exports = {
 
   development: {

@@ -50,7 +50,7 @@ const PostCard = (props) => {
             <PostCardContent>
                 <SmallParagraph bold >{post.likes} {post.likes === 1 ? `like` : `likes`}</SmallParagraph>
                 <div className="caption">
-                    <SmallParagraph bold nomargin style={{marginRight: `.5rem`}}>{post.username}</SmallParagraph>
+                    {!post.caption ? null : <SmallParagraph bold nomargin style={{marginRight: `.5rem`}}>{post.username}</SmallParagraph> }
                     <SmallParagraph  nomargin>{post.caption}</SmallParagraph>
 
                 </div>

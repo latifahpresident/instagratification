@@ -33,6 +33,7 @@ export const newPost = (post) => async dispatch => {
     try {
         const res = await axios.post(`posts/new-post`, {...post});
         if (res.status === 201) {
+            console.log("new post succes message", res.data.message)
             dispatch(success(actionTypes.NEW_POSTS_SUCCESS, res.data.message))
         } else {
             dispatch(fail(actionTypes.NEW_POSTS_FAIL, res.data.message))

@@ -1,10 +1,11 @@
 import React from 'react';
 import { NewPostWrapper,  NewPostNavigation, NewPostHeader } from './NewPost.styles';
 import LinkButton from './../UI/Buttons/LinkButton';
-import { primaryBlue } from '../../global-styles/global.styles';
+import NewPostImagePreview from './NewPostImagePreview';
 
 const NewPost = (props) => {
-    const { cancel } = props;
+    const { cancel, imagePreview, handleUpload } = props;
+    console.log("new post comp imaage preview", imagePreview)
     return (
         <NewPostWrapper>
         <NewPostNavigation>
@@ -17,12 +18,12 @@ const NewPost = (props) => {
             <NewPostHeader>New Post</NewPostHeader>
             <LinkButton
                 className={`white`}
-                text={`Next`}
+                text={`Post`}
                 size={`lg`}
-                handleClick={cancel}
-                style={{color: `${primaryBlue}`}}
+                handleClick={handleUpload}
             />
         </NewPostNavigation>
+        <NewPostImagePreview imagePreview={imagePreview}/>
     </NewPostWrapper>
     )
 };

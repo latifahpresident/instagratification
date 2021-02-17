@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import PostCard from "./../../components/PostCard/PostCard";
 import {useSelector, useDispatch} from "react-redux";
-import {updatePosts, getPosts} from "./../../store/actions/posts";
+import {updatePosts, getPosts, } from "./../../store/actions/posts";
 
 const Posts = () => {
     const dispatch = useDispatch();
     const posts = useSelector(state => state.posts.posts);
+    const successMsg = useSelector(state => state.posts.successMsg);
+
     const [newLikes, setLikes] = useState(0);
     const [liked, setLiked] = useState(false);
 
@@ -31,7 +33,7 @@ const Posts = () => {
   
     useEffect(() => {
         dispatch(getPosts());
-    }, [dispatch, liked]);
+    }, [dispatch, liked, successMsg]);
 
     return (
         <React.Fragment>

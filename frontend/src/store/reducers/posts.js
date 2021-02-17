@@ -19,7 +19,7 @@ export default (state=intialState, action) => {
             return {
                 ...state,
                 loading: false,
-                posts: state.posts.concat(action.payload.posts),
+                posts: state.posts.concat(action.payload.posts).reverse(),
             }
         case actionTypes.GET_POSTS_FAIL:
 
@@ -58,7 +58,7 @@ export default (state=intialState, action) => {
             return {
                 ...state,
                 loading: false,
-                successMsg: action.payload.message,
+                successMsg: action.payload,
             }
         case actionTypes.NEW_POSTS_FAIL:
             return {

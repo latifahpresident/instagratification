@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from "react";
 import PostCard from "./../../components/PostCard/PostCard";
 import {useSelector, useDispatch} from "react-redux";
-import {updatePosts, getPosts} from "./../../store/actions/posts";
+import {updatePosts, getPosts, } from "./../../store/actions/posts";
 
-const Posts = (props) => {
+const Posts = () => {
     const dispatch = useDispatch();
     const posts = useSelector(state => state.posts.posts);
-    const loading = useSelector(state => state.posts.loading);
+    const successMsg = useSelector(state => state.posts.successMsg);
 
     const [newLikes, setLikes] = useState(0);
     const [liked, setLiked] = useState(false);
-    console.log("new likes", newLikes)
-    // console.log("POSTDATA FROM POSTS", postsData)
 
     const updatePost = (updates) =>{
-        console.log("THIS POST IS UPDATING")
-
         dispatch(updatePosts(updates))
     };
 
     const handleLikeUnlike = (updates) => {
-        console.log("CLICKED", updates.likes)
         if (!liked) {
             setLiked(true)
             setLikes(updates.likes + 1)
@@ -38,24 +33,13 @@ const Posts = (props) => {
   
     useEffect(() => {
         dispatch(getPosts());
-    }, [dispatch, liked])
+    }, [dispatch, liked, successMsg]);
 
-
-   
-    // const { posts } = props
-// console.log("props from posts.js", posts)
-console.log("likes", newLikes)
     return (
         <React.Fragment>
-            {/* <PostCard
-                post={ posts }
-                handleLikeUnlike={handleLikeUnlike}
-                likes={likes}
-                liked={liked}
-              /> */}
-            {loading ? "loading" : posts.map(post => (
-                // console.log("posts from map", post),
+            {posts.map(post => (
               <PostCard
+                key={post.id}
                 post={ post }
                 handleLikeUnlike={handleLikeUnlike}
                 likes={newLikes}

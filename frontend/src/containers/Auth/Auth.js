@@ -166,7 +166,7 @@ const Auth = (props) => {
             error={error}
             changed={ (event) => inputChangeHandler(event, formElement.id)}
         />
-    ))
+    ));
 
     console.log("error msg", errorMsg)
     return (

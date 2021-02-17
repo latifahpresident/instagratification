@@ -8,10 +8,9 @@ import {MainWrapper} from './../../../global-styles/global.styles';
 
 const Layout = (props) => {
     const id = useSelector(state => state.user.firebase_id)
-    console.log("props pathname", props)
     return (
         <Aux>
-            {props.location.pathname === '/signup' || props.location.pathname  ===  '/signin' || props.location.pathname  ===  `/profile/${id}` ? null : <Navigation/> }
+            { props.location.pathname === '/signup' || props.location.pathname  ===  '/signin' || props.location.pathname  ===  `/profile/${id}` || props.location.pathname === '/newpost' ? null : <Navigation/> }
             
              <MainWrapper >
                 {props.children}

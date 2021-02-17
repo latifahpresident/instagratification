@@ -1,56 +1,60 @@
-import * as postsTypes from "./actionTypes";
+import * as actionTypes from "./actionTypes";
 import axios from "./../../utilities/axiosinstance";
 
-export const getPosts = () => (dispatch) => {
-    console.log("in acrion POSTS")
+export const start = (type) => {
+    return { type: type }
+}
 
-    dispatch ({
-        type: postsTypes.GET_POSTS_START,
-    })
-    axios.get(`posts/posts`).then(res => {
-        console.log("TOP of GET POSTS", res.data)
+export const success = (type, data) => {
+    return { type: type, payload: data }
+}
+
+export const fail = (type, err) => {
+    return { type: type, payload: err }
+}
+
+export const getPosts = () => async dispatch => {
+    dispatch (start(actionTypes.GET_POSTS_START));
+    const res = await axios.get(`posts/posts`)
+    try {
         if (res.status === 404) {
-            dispatch ({
-                type: postsTypes.GET_POSTS_FAIL,
-                payload: res.data.message
-            })
+            dispatch(fail(actionTypes.GET_POSTS_FAIL, res.data.message));
         } else {
-            dispatch ({
-                type: postsTypes.GET_POSTS_SUCCESS,
-                payload: res.data
-            })
+            dispatch(success(actionTypes.GET_POSTS_SUCCESS, res.data));
         }
-    }).catch (err => {
-        dispatch ({
-            type: postsTypes.GET_POSTS_FAIL,
-            payload: err
-        })
-    })
+    }
+    catch (err) {
+        dispatch (fail(actionTypes.GET_POSTS_FAIL, err));
+    }
 };
 
-export const updatePosts = (updates) => (dispatch) => {
+export const newPost = (post) => async dispatch => {
+    dispatch(start(actionTypes.NEW_POSTS_START));
+    try {
+        const res = await axios.post(`posts/new-post`, {...post});
+        if (res.status === 201) {
+            console.log("new post succes message", res.data.message)
+            dispatch(success(actionTypes.NEW_POSTS_SUCCESS, res.data.message))
+        } else {
+            dispatch(fail(actionTypes.NEW_POSTS_FAIL, res.data.message))
+        }
+    } catch (err) {
+        dispatch(fail(actionTypes.NEW_POSTS_FAIL, err))
+    }
+};
+
+export const updatePosts = (updates) => async dispatch => {
     const id = updates.id;
-    console.log("updates " ,updates)
-    dispatch ({
-        type: postsTypes.UPDATE_POSTS_START,
-    })
-    axios.put(`/posts/update/${id}`, {...updates}).then(res => {
+    dispatch(start(actionTypes.UPDATE_POSTS_START));
+    const res = await axios.put(`/posts/update/${id}`, {...updates})
+    try {
         if (res.status === 404) {
-            dispatch({
-                type: postsTypes.UPDATE_POSTS_FAIL,
-                payload: res.data.message
-            })
+            dispatch(fail(actionTypes.UPDATE_POSTS_FAIL, res.data.message));
         } else if (res.status === 201) {
             const message = res.data.message
-            dispatch({
-                type: postsTypes.UPDATE_POSTS_SUCCESS,
-                payload: {updates: res.data.updates, id, message}, 
-            })
+            dispatch(success(actionTypes.UPDATE_POSTS_SUCCESS, {updates: res.data.updates, id, message}));
         }
-    }).catch (err => {
-        dispatch({
-            type: postsTypes.UPDATE_POSTS_FAIL,
-            payload: err
-        })
-    }) 
+    } catch (err) {
+        dispatch(fail(actionTypes.UPDATE_POSTS_FAIL, err));
+    }
 };

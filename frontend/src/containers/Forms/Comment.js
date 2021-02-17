@@ -7,7 +7,6 @@ const CommentForm = () => {
     const handleSubmit = (event) => {
         setComment(event)
     }
-    console.log("COMMENT FROM COMMENT FORM", comment)
 
     //TODO: MAKE THIS A SWITCH CASE FORM
     return (

@@ -67,6 +67,24 @@ export default (state=intialState, action) => {
                 error: true,
                 errorMsg: action.payload.message,
             }
+        case actionTypes.ADD_COMMENT_START:
+            return {
+                ...state,
+                loading: true,
+            }
+        case actionTypes.ADD_COMMENT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                successMsg: action.payload,
+            }
+        case actionTypes.ADD_COMMENT_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: true,
+                errorMsg: action.payload.message,
+            }
     default:
         return state;
     }

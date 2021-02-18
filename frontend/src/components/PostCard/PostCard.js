@@ -12,7 +12,7 @@ import Input from './../../containers/Forms/Comment';
 
 
 const PostCard = (props) => {
-    const { post, handleLikeUnlike, liked } = props;
+    const { post, handleLikeUnlike, liked, form, handleSubmit } = props;
     const loading = useSelector(state => state.posts.loading);
     return (
         <PostCardWrapper>
@@ -59,7 +59,11 @@ const PostCard = (props) => {
             <PostCardUserInfo comment>
                     <Avatar className="avatar" username={post.username} src={post.profile_url} />
              </PostCardUserInfo>                
-             <Input/>
+             {/* <Input/> */}
+             <form onSubmit={handleSubmit} style={{width: `85%`}}>
+                {form}
+             </form>
+       
             </PostCardCommentWrapper>
         </PostCardWrapper>
     )

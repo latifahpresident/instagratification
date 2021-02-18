@@ -1,6 +1,7 @@
 const Post = require("../models/post");
 const User = require("../models/user");
 const Comment = require("../models/comment");
+const { async } = require("rsvp");
 
 exports.addPost = async(req, res) => {
     try {
@@ -21,10 +22,28 @@ exports.addPost = async(req, res) => {
 };
 
 
+let comments = [];
+const  getComments = (posts) => {
+    console.log("pushed comments", comments)
+
+  posts.forEach(element => {
+         const postComment = Comment.getCommentByPostId(element.id);
+       return comments.push(postComment)
+    });
+
+}
+
+console.log("pushed comments", comments)
+
 //admin controller
 exports.getPosts = async(req, res) => {
     try {
         const posts = await Post.getPost();
+        
+        getComments(posts)
+   
+        
+
         if (posts.length === 0) {
             return res.status(404).json({message: `No posts found, please try again.`})
         } else {

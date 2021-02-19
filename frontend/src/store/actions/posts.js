@@ -1,17 +1,17 @@
 import * as actionTypes from "./actionTypes";
-import axios from "./../../utilities/axiosinstance";
+import axios from "../../shared/axiosinstance";
 
 export const start = (type) => {
     return { type: type }
-}
+};
 
 export const success = (type, data) => {
     return { type: type, payload: data }
-}
+};
 
 export const fail = (type, err) => {
     return { type: type, payload: err }
-}
+};
 
 export const getPosts = () => async dispatch => {
     dispatch (start(actionTypes.GET_POSTS_START));
@@ -70,5 +70,20 @@ export const addComment = (comment) => async dispatch => {
         }
     } catch (err) {
         dispatch(fail(actionTypes.ADD_COMMENT_FAIL, err))
+    }
+};
+
+export const getPostsById = (id) => async dispatch => {
+    dispatch (start(actionTypes.GET_POST_BY_ID_START));
+    const res = await axios.get(`posts/posts/${id}`)
+    try {
+        if (res.status === 404) {
+            dispatch(fail(actionTypes.GET_POST_BY_ID_FAIL, res.data.message));
+        } else {
+            dispatch(success(actionTypes.GET_POST_BY_ID_SUCCESS, {posts: res.data.posts, comments: res.data.comment}));
+        }
+    }
+    catch (err) {
+        dispatch (fail(actionTypes.GET_POST_BY_ID_FAIL, err));
     }
 };

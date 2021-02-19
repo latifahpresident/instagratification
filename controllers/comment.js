@@ -1,5 +1,22 @@
 const Comment = require("./../models/comment");
 
+exports.getPostsById = async(req, res) => {
+    const { id } = req.params;
+    try {
+        if (!id) {
+            return res.status(404).json({message: `There was an error getting the comments, please try again.`})
+        } else {
+            const posts = await Post.getPostBy(id);
+            const comment = await Comment.getCommentByPostId(id);
+console.log("post", posts)
+            return res.status(200).json({posts: posts, comment: comment})
+        }
+    } catch(err) {
+        res.status(500).json({message: "There was a problem getting your posts, please try again."})
+        console.log("error from post by id", err)
+    }
+};
+
 exports.addComment = async(req, res) => {
     const comment = {
         post_id: req.body.post_id,

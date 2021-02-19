@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
-import axios from "./../../utilities/axiosinstance";
-import {auth} from "./../../utilities/firebaseConfig";
+import axios from "../../shared/axiosinstance";
+import {auth} from "../../shared/firebaseConfig";
 
 export const start = (type) => {
     return { type: type }

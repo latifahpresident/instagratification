@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from 'react-redux'
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux'
 import { Avatar, IconButton, } from "@material-ui/core";
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,12 +8,21 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import Skeleton from '@material-ui/lab/Skeleton';
 import {ButtonIcon, SmallParagraph, likedColor} from "./../../global-styles/global.styles";
 import { PostCardWrapper, PostCardHeader, PostCardUserInfo, PostCardImage, PostCardIconWrapper, PostCardContent, PostCardCommentWrapper,  } from "./PostCard.styles";
-import Input from './../../containers/Forms/Comment';
+import { getPostsById } from "../../store/actions/posts";
 
 
 const PostCard = (props) => {
     const { post, handleLikeUnlike, liked, form, handleSubmit } = props;
     const loading = useSelector(state => state.posts.loading);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getPostsById(post.id))
+        return () => {
+            console.log("unsubscribe")
+        }
+    }, [dispatch]);
+
     return (
         <PostCardWrapper>
             <PostCardHeader>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PostCard from "./../../components/PostCard/PostCard";
 import {useSelector, useDispatch} from "react-redux";
 import {updatePosts, getPosts, } from "./../../store/actions/posts";
-import { checkValidity } from './../../utilities/utilities';
+import { checkValidity } from './../../shared/utilities';
 import Input from './../../components/UI/Input/Input';
 
 const Posts = () => {

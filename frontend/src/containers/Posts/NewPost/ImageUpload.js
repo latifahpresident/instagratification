@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Input from './../../../components/UI/Input/Input';
-import { checkValidity } from './../../../utilities/utilities';
+import { checkValidity } from './../../../shared/utilities';
 
 const ImageUpload = (props) => {
     const { setImagePreview, setImage } = props;

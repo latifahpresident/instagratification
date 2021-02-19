@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 import {getUsers} from "./../../store/actions/user";
-
 import Followers from '../../components/Followers/Followers';
 import Posts from './../Posts/Posts';
 const followersData = [

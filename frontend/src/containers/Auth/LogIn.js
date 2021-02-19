@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {withRouter} from 'react-router-dom';
-import { auth } from '../../utilities/firebaseConfig';
+import { auth } from '../../shared/firebaseConfig';
 import Input from './../../components/UI/Input/Input';
 import AuthWrapper from './../../components/Auth/Auth';
 import ButtonComponent from '../../components/UI/Buttons/Button';

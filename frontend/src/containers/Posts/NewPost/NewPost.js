@@ -4,9 +4,9 @@ import { withRouter } from 'react-router-dom';
 import Input from './../../../components/UI/Input/Input';
 import NewPostComponent from './../../../components/NewPost/NewPosts';
 import ImageUploadInput from './ImageUpload';
-import { storage } from './../../../utilities/firebaseConfig';
+import { storage } from './../../../shared/firebaseConfig';
 import { newPost, } from './../../../store/actions/posts';
-import { checkValidity } from './../../../utilities/utilities';
+import { checkValidity } from './../../../shared/utilities';
 
 const NewPost = (props) => {
     const dispatch = useDispatch();

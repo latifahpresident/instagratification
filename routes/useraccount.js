@@ -4,7 +4,7 @@ const router = express.Router();
 const isAuthenticated = require("./../middleware/authentication")
 //TODO: REORGANIZE HOW ROUTES ARE SETUP MAY NEED TO ADD REGISTRATION ROUTE TO THIS FOLDER
 //GET => /user/profile/:id => GET ALL USER ACCOUNT
-router.get("/profile/:id", isAuthenticated.auth, userController.getById);
+router.get("/profile/:id",  userController.getById);
 
 //DELETE => /user/delete/id => DELETE USER ACCOUNT
 router.delete("/delete/:id", userController.deleteUser);

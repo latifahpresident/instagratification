@@ -8,6 +8,7 @@ addPost = (post) => {
 getPost = () => {
     return db("post")
     .innerJoin("user", "post.firebase_id ", "user.firebase_id")
+    // .innerJoin("comment", "post.firebase_id", "comment.author")
     .select(
         "post.id", 
         "post.firebase_id as post_firebase_id", 
@@ -18,6 +19,7 @@ getPost = () => {
         "user.firebase_id",
         "post.likes",
         "post.created_at",
+        // "comment.comment"
         );
 };
 

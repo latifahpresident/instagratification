@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import { auth } from '../../utilities/firebaseConfig';
+import { auth } from '../../shared/firebaseConfig';
 import { register } from '../../store/actions/user';
 import Input from './../../components/UI/Input/Input';
 import AuthWrapper from './../../components/Auth/Auth';

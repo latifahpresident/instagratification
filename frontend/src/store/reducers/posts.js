@@ -2,6 +2,7 @@ import * as actionTypes from './../actions/actionTypes';
 
 const intialState = {
     posts: [],
+    comments: [],
     loading: false,
     error: false,
     errorMsg: null,
@@ -22,7 +23,6 @@ export default (state=intialState, action) => {
                 posts: state.posts.concat(action.payload.posts).reverse(),
             }
         case actionTypes.GET_POSTS_FAIL:
-
             return {
                 ...state,
                 loading: false,
@@ -61,6 +61,43 @@ export default (state=intialState, action) => {
                 successMsg: action.payload,
             }
         case actionTypes.NEW_POSTS_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: true,
+                errorMsg: action.payload.message,
+            }
+        case actionTypes.ADD_COMMENT_START:
+            return {
+                ...state,
+                loading: true,
+            }
+        case actionTypes.ADD_COMMENT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                successMsg: action.payload,
+            }
+        case actionTypes.ADD_COMMENT_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: true,
+                errorMsg: action.payload.message,
+            }
+        case actionTypes.GET_POST_BY_ID_START:
+            return {
+                ...state,
+                loading: true,
+            }
+        case actionTypes.GET_POST_BY_ID_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                posts: state.posts.concat(action.payload.posts),
+                comments: state.comments.concat(action.payload.comments),
+            }
+        case actionTypes.GET_POST_BY_ID_FAIL:
             return {
                 ...state,
                 loading: false,

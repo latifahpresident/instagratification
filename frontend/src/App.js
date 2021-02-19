@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import {useDispatch} from 'react-redux'
 import { Route, Switch, withRouter} from 'react-router-dom';
 import './App.css';
-import Layout from './utilities/hoc/Layout/Layout';
-import firebase from './utilities/firebaseConfig';
+import Layout from './shared/hoc/Layout/Layout';
+import firebase from './shared/firebaseConfig';
 import { authenticateUser } from './store/actions/user';
 import Feed from './containers/Feed/Feed';
 import Profile from './containers/Profile/Profile';

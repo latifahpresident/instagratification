@@ -22,25 +22,25 @@ exports.addPost = async(req, res) => {
 };
 
 
-let comments = [];
-const  getComments = (posts) => {
-    console.log("pushed comments", comments)
+// let comments = [];
+// const  getComments = (posts) => {
+//     console.log("pushed comments", comments)
 
-  posts.forEach(element => {
-         const postComment = Comment.getCommentByPostId(element.id);
-       return comments.push(postComment)
-    });
+//   posts.forEach(element => {
+//          const postComment = Comment.getCommentByPostId(element.id);
+//        return comments.push(postComment)
+//     });
 
-}
+// }
 
-console.log("pushed comments", comments)
+// console.log("pushed comments", comments)
 
 //admin controller
 exports.getPosts = async(req, res) => {
     try {
         const posts = await Post.getPost();
         
-        getComments(posts)
+        // getComments(posts)
    
         
 

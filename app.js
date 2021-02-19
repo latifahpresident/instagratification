@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(helmet());
 app.use(cors());
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); //comment out when pushing to production
+    // res.header("Access-Control-Allow-Origin", "*"); //comment out when pushing to production
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     next();

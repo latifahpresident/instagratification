@@ -16,12 +16,12 @@ const PostCard = (props) => {
     const loading = useSelector(state => state.posts.loading);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getPostsById(post.id))
-        return () => {
-            console.log("unsubscribe")
-        }
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getPostsById(post.id))
+    //     return () => {
+    //         console.log("unsubscribe")
+    //     }
+    // }, [dispatch]);
 
     return (
         <PostCardWrapper>

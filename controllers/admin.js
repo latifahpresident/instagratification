@@ -9,7 +9,8 @@ exports.getUser = async(req, res) => {
             return res.status(200).json({users: users})
         }
     } catch (err) {
-        res.status(500).json({message: err.message})
+        res.status(500).json({message: err})
+        console.log("error from  get users", err)
     }
 };
 

@@ -63,7 +63,7 @@ exports.getPostsById = async(req, res) => {
             return res.status(404).json({message: `There was an error getting that post, please try again.`})
         } else {
             const posts = await Post.getPostBy(id);
-            const comment = await Comment.getCommentByPostId(id);
+            // const comment = await Comment.getCommentByPostId(id);
 console.log("post", posts)
             return res.status(200).json({posts: posts, comment: comment})
         }

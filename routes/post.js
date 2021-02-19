@@ -4,7 +4,7 @@ const router = express.Router();
 const isAuthenticated = require('./../middleware/authentication');
 
 //POST => /posts/new-post => ADD A NEW POST
-router.post("/new-post",  postController.addPost);
+router.post("/new-post",  isAuthenticated.auth, postController.addPost);
 //GET => /posts/get-post => GET ALL POSTS
 router.get("/posts", postController.getPosts);
 //GET => /posts/:id  => GET  POSTS FROM ID
